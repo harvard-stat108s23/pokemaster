@@ -6,6 +6,7 @@ library(hexSticker)
 library(ggplot2)
 library(RColorBrewer)
 
+#Need to comment our lines of code
 
 #FUNCTION 1#################################################################
 pokedex <- function(ids = seq(1,386)){
@@ -13,12 +14,22 @@ pokedex <- function(ids = seq(1,386)){
   #ids must be a VECTOR of NATURAL (INTEGER POSITIVE) numbers from 1 to 386 OR   - Example: pokedex(c(1,4,3))
   #it can also be a vector of strings of the name of the pokemons (MUST BE A VALID NAME) - Example: pokedex(c("pikachu","charmander"))
   #it can also be a mixture of both  Example: pokedex(c(1,"pikachu"))
+
+  #Delina test function
+  #check if ids is vector or numeric
+  checkid <-
+    {{ ids }} %>%
+    (is.vector() && is.numeric()) | (is.vector() && is.character())
+  stopifnot(checkid)
+
+  #change this name
   pokedex <- data.frame(NULL)
+
   for (id in ids) {
     response <- GET(paste0("https://pokeapi.co/api/v2/pokemon/",id,"/"))
     content <- content(response, as = "text")
     pokemon_info <- fromJSON(content)[c("id", "name", "weight", "height", "base_experience", "stats", "types")]
-    
+
     new_pokemon <- data.frame(id = pokemon_info$id,
                          name = pokemon_info$name,
                          weight = pokemon_info$weight,
@@ -29,25 +40,25 @@ pokedex <- function(ids = seq(1,386)){
           tidyr::unnest(cols=c(stat)) %>%
           dplyr::select(name, base_stat) %>%
           tidyr::pivot_wider(., names_from =name, values_from = base_stat),
-        
+
         pokemon_info$types %>%
           tidyr::unnest(cols=c(type)) %>%
           dplyr::select(slot, name)  %>%
           tidyr::pivot_wider(., names_from =slot, values_from = name)
       )
-    
+
     pokedex <- dplyr::bind_rows(pokedex, new_pokemon)
   }
-  
+
   if (!('2' %in% names(pokedex))) {
     pokedex$'2' <- NA
   }
-  
+
   pokedex <- pokedex %>%
-    dplyr::rename("special_attack" = 'special-attack', 
+    dplyr::rename("special_attack" = 'special-attack',
                   "special_defense" = "special-defense",
                   "type_1" =  "1" ,"type_2" = "2")
-  
+
   return(pokedex)
   #assign("pokedex", pokedex, envir = .GlobalEnv)   ##this creates a df named pokemodex (should it be done this way?) Not for now
   }
@@ -73,7 +84,7 @@ pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
   #the length of the vector must be an integer between 1 and 6
   #title must be a string
   #color must be a valid color or valid HEX code
-  
+
   ids <- pokedex(myteam)$id
   sprites_links <- images <- c()
   joined_image <- NULL
@@ -84,18 +95,18 @@ pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
     images <- c(images, paste0("image",i))
     i=i+1
   }
-  
+
   for (i in 1:length(images)) {
     assign(images[i], magick::image_trim(magick::image_scale(magick::image_read(sprites_links[i]), "300x300")))
     joined_image <- image_join(joined_image, get(images[i]))
   }
-  
+
   flashcard <- magick::image_border(
     magick::image_montage(joined_image, tile = 3),
     geometry = "25x25",
     color=color
   )
-  
+
   flashcard <- magick::image_annotate(flashcard, text = title, size = 15, gravity = "north", location="-0+3")
   return(flashcard)
 }
@@ -109,7 +120,7 @@ pokestats <- function(myteam, title="My Pokemon Team") {
   #myteam must be a vector of numbers between 1 and 386 or a vector of valid pokemon names or a combination of both
   #the length of the vector must be an integer between 1 and 6
   #title must be a string
-  
+
   #IMPROVE GRAPH
   #Pls improve title, axis, colors, legend name
   #Rename legend "variable" to "stat"
@@ -121,17 +132,17 @@ pokestats <- function(myteam, title="My Pokemon Team") {
   #special_attack -> Special Attack
   #special_defense -> Special Defense
   #speed -> Speed
-  
+
   colors <- palette(RColorBrewer::brewer.pal(6, "Set1"))
   barplot <- pokedex(myteam) %>%
     dplyr::select(c("name", "hp", "attack", "defense", "special_attack", "special_defense", "speed")) %>%
     reshape2::melt(., id.vars = "name") %>%
-    ggplot2::ggplot(., aes(x = name, y = value, fill = variable)) + 
-    ggplot2::geom_bar(stat="identity", position = "dodge") + 
+    ggplot2::ggplot(., aes(x = name, y = value, fill = variable)) +
+    ggplot2::geom_bar(stat="identity", position = "dodge") +
     scale_fill_manual(values=colors) +
     ggtitle(title) #+
     #theme_classic()
-  
+
   return(barplot)
 }
 
@@ -236,19 +247,19 @@ response2
 # functions:
 #
 # (by name, random, numberofpokemons/conditions (?) legendary, starter, type, with/without reposition)
-# 
-# 
-# 1. POKEDEX: function that creates dataframe with feautres like id, name, stats, type). 
+#
+#
+# 1. POKEDEX: function that creates dataframe with feautres like id, name, stats, type).
 # input: nothing
 # output: dataframe of all pokemons
-# 
-# 
+#
+#
 # 2. POKETEAM: flashcard of the team
-# input: vector of up to 6 pokemons 
+# input: vector of up to 6 pokemons
 # output: image
-# 
+#
 # 3. POKESTATS: function that plots barplot of the basic stats for each pokemon_data
-# input: vector of up to 6 pokemons  
+# input: vector of up to 6 pokemons
 # output: ggbarplot
 # hitpoints, attack, defense, sp attack, special defense, speed
 
