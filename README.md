@@ -18,6 +18,8 @@ You can install the development version of pokemaster from
 devtools::install_github("harvard-stat108s23/project2-group3")
 ```
 
+## About the Data
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
