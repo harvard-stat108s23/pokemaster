@@ -2,11 +2,11 @@ Package: pokemaster
 Title: A Package to Explore the Pokemon API
 Version: 0.0.0.9000
 Authors@R: 
-    c(person("Joslyn", "Fu", , "jfu@g.harvard.edu", role = c("aut", "cre"),
+    c(person("Joslyn", "Fu", , "jfu@g.harvard.edu", role = c("aut"),
            comment = c(ORCID = "YOUR-ORCID-ID")),
       person("Michael", "Sam", , "msamchec@g.harvard.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID")),
-      person("Delina", "Irgau", , "dirgau@college.harvard.edu", role = c("aut", "cre"),
+      person("Delina", "Irgau", , "dirgau@college.harvard.edu", role = c("aut"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
            )
 Description: This package explores the pokemon API. It first creates a dataframe of the It then helps you generate a pokemon team. You can also see the relevant stats of your team and create a graph of the pokemon team including the selected pokemons.
