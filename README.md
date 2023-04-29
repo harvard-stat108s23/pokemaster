@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# pokemaster <img src="pokemaster.png" align="right" style="padding-left:10px;background-color:white;" />
+# pokemaster <img src="pokemaster.png" align="right" height="139" />
 
 <!-- badges: start -->
 <!-- badges: end -->
