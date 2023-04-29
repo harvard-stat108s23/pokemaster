@@ -1,12 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# pokemaster
+# pokemaster <img src="pokemaster.png" align="right" style="padding-left:10px;background-color:white;" />
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of pokemaster is to explore the pokemon API
+The goal of pokemaster is to explore the pokemon API. The users can
+first create a dataframe of the interested pokemons (our default is the
+386 pokemons, the first 3 generations). It then helps you generate a
+pokemon team. You can also see the relevant stats of your team and
+create a graph of the pokemon team including the selected pokemons.
 
 ## Installation
 

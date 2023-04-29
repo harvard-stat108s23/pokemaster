@@ -9,7 +9,7 @@ Authors@R:
       person("Delina", "Irgau", , "dirgau@college.harvard.edu", role = c("aut"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
            )
-Description: This package explores the pokemon API. It first creates a dataframe of the It then helps you generate a pokemon team. You can also see the relevant stats of your team and create a graph of the pokemon team including the selected pokemons.
+Description: This package explores the pokemon API. The users can first create a dataframe of the interested pokemons (our default is the 386 pokemons, the first 3 generations). It then helps you generate a pokemon team. You can also see the relevant stats of your team and create a graph of the pokemon team including the selected pokemons.
 License: usethis::use_mit_license()
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
