@@ -24,6 +24,13 @@ devtools::install_github("harvard-stat108s23/project2-group3")
 
 ## About the Data
 
+The [pokemon API](https://pokeapi.co/) contains information on Pokémon,
+their moves, abilities, types, egg groups and much, much more. An API
+(Application Programming Interface) is a contract that allow developers
+to interact with an application through a set of interfaces. In this
+case, the application is a database of thousands of Pokémon-related
+objects, and the interfaces are URL links.
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
