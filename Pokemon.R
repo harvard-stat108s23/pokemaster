@@ -8,8 +8,9 @@ library(RColorBrewer)
 
 #Need to comment our lines of code
 
+#  ids = seq(1,386)
 #FUNCTION 1#################################################################
-pokedex <- function(ids = seq(1,386)){
+pokedex <- function(){
   #TEST
   #ids must be a VECTOR of NATURAL (INTEGER POSITIVE) numbers from 1 to 386 OR   - Example: pokedex(c(1,4,3))
   #it can also be a vector of strings of the name of the pokemons (MUST BE A VALID NAME) - Example: pokedex(c("pikachu","charmander"))
@@ -20,7 +21,12 @@ pokedex <- function(ids = seq(1,386)){
   checkid <-
     {{ ids }} %>%
     (is.vector() && is.numeric()) | (is.vector() && is.character())
+    (ids %% 1 == 0)
+    (ids >= 1 | ids <=386)
+    (ids %in% pokemon_info$name)
   stopifnot(checkid)
+
+  #error message
 
   #change this name
   pokedex <- data.frame(NULL)
