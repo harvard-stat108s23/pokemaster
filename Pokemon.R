@@ -9,6 +9,16 @@
 
 #Need to comment our lines of code
 
+#DELINA QUESTIONS
+#1. declare package dependencies for each function and delete libraries
+#2. figure out which packages are in which functions for test code
+#3. explain error when run devtools.. not an exported object. test code is commented out for r files
+#3. run through test code.. also ask about pokedex_df().. was that pushed? can also change now
+#4. ask questions on function 3 and one on function 4
+#5. create help files with devtools and ask about man (out of order?)
+#6. mention data file needs to be made
+#7. clean up files
+
 #  ids = seq(1,386)
 #FUNCTION 1#################################################################
 pokedex <- function(ids = seq(1,386)){
@@ -212,7 +222,6 @@ pokestats <- function(myteam, title="My Pokemon Team") {
   ggplot2::pokestats()
   RColorBrewer::pokestats()
 
-
   #TEST
   #myteam must be a vector of numbers between 1 and 386 or a vector of valid pokemon names or a combination of both
   #the length of the vector must be an integer between 1 and 6
@@ -237,8 +246,9 @@ pokestats <- function(myteam, title="My Pokemon Team") {
     stop('Length of vector must be between 1 and 6.')
   }
   if(!(is.character(myteam))){
-    stop('Title must be a string.')
+   stop('Title must be a string.')
   }
+
   #IMPROVE GRAPH
   #Pls improve title, axis, colors, legend name
   #Rename legend "variable" to "stat"

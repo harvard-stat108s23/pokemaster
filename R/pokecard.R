@@ -1,3 +1,15 @@
+#' Title
+#'
+#' @param myteam
+#' @param color
+#' @param title
+#'
+#' @return
+#' @export
+#'
+#' @examples
+
+#FUNCTION 3#########################################
 pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
 
   #Packages
@@ -21,32 +33,32 @@ pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
 
   #Delina test function
   #does this handle a combination of both or only if its a vector of numbers or names?
-  if(!(is.numeric(myteam) | (is.character(myteam)))){
-    stop('Input must be a vector of positive integers, strings, or a combination of both.')
-  }
-  #not sure that this works
-  x = length(myteam)
-  if((x < 1) | (x > 6)){
-    stop('Length of vector must be between 1 and 6.')
-  }
-  #regular expression for hex
-  #regex = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
-  #if(color ))){
-  #stop('Color must be a valid color name or HEX code.')
-  #}
-  if(!(is.character(title))){
-    stop('Title must be a string.')
-  }
-  #should this say is.numeric first??
-  if(is.numeric(myteam) & (!(myteam %% 1 == 0))){
-    stop('Input must be an integer.')
-  }
-  if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
-    stop('Input must be a valid pokemon name.')
-  }
-  if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
-    stop('Input must be between 1 and 386.')
-  }
+  # if(!(is.numeric(myteam) | (is.character(myteam)))){
+  #   stop('Input must be a vector of positive integers, strings, or a combination of both.')
+  # }
+  # #not sure that this works
+  # x = length(myteam)
+  # if((x < 1) | (x > 6)){
+  #   stop('Length of vector must be between 1 and 6.')
+  # }
+  # #regular expression for hex
+  # #regex = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+  # #if(color ))){
+  # #stop('Color must be a valid color name or HEX code.')
+  # #}
+  # if(!(is.character(title))){
+  #   stop('Title must be a string.')
+  # }
+  # #should this say is.numeric first??
+  # if(is.numeric(myteam) & (!(myteam %% 1 == 0))){
+  #   stop('Input must be an integer.')
+  # }
+  # if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
+  #   stop('Input must be a valid pokemon name.')
+  # }
+  # if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
+  #   stop('Input must be between 1 and 386.')
+  # }
 
   ids <- pokedex(myteam)$id
   sprites_links <- images <- c()
