@@ -10,15 +10,14 @@ library(RColorBrewer)
 #Need to comment our lines of code
 
 #DELINA QUESTIONS
-#2. figure out which packages are in which functions for test code
-#3. explain error when run devtools.. not an exported object. test code is commented out for r files
-#3. run through test code.. also ask about pokedex_df().. was that pushed? can also change now
-#4. ask questions on function 3 and one on function 4
-#5. create help files with devtools and ask about man (out of order?)
-#6. mention data file needs to be made
-#7. clean up files
+#1. graphs
+#2. figure out could not find function
+#3. regular expression for hexcode
+#4. devtools
+#5. data?
+#6. clean up file
 
-#  ids = seq(1,386)
+
 #FUNCTION 1#################################################################
 pokedex <- function(ids = seq(1,386)){
 
@@ -27,7 +26,7 @@ pokedex <- function(ids = seq(1,386)){
   #it can also be a vector of strings of the name of the pokemons (MUST BE A VALID NAME) - Example: pokedex(c("pikachu","charmander"))
   #it can also be a mixture of both  Example: pokedex(c(1,"pikachu"))
 
-  #Delina test function
+  #DELINA TEST
   if(!(is.numeric(ids) | (is.character(ids)))){
     stop('Input must be a vector of positive integers, strings, or a combination of both.')
   }
@@ -41,7 +40,6 @@ pokedex <- function(ids = seq(1,386)){
     stop('Input must be a valid pokemon name.')
   }
 
-  #change this name
   pokedex_df <- data.frame(NULL)
 
   for (id in ids) {
@@ -89,7 +87,8 @@ pokegen <- function(n=6) {
 
   #TEST
   #n must be a VECTOR of NATURAL (INTEGER POSITIVE) from 1 to 6. Example:  pokegen(3)
-  #Delina test function
+
+  #DELINA TEST
   if(!(is.numeric(n))){
     stop('Input must be a vector of positive integers.')
   }
@@ -99,6 +98,7 @@ pokegen <- function(n=6) {
   if(is.numeric(n) & (n < 1 | n > 6)){
     stop('Input must be between 1 and 6.')
   }
+
   poketeam <- pokedex(sample(seq(1,386),n))$name
   return(poketeam)
 }
@@ -115,8 +115,7 @@ pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
   #title must be a string
   #color must be a valid color or valid HEX code
 
-
-  #Delina test function
+  #DELINA TEST
   #does this handle a combination of both or only if its a vector of numbers or names?
   if(!(is.numeric(myteam) | (is.character(myteam)))){
     stop('Input must be a vector of positive integers, strings, or a combination of both.')
@@ -182,7 +181,7 @@ pokestats <- function(myteam, title="My Pokemon Team") {
   #the length of the vector must be an integer between 1 and 6
   #title must be a string
 
-  #Delina test function
+  #DELINA TEST
   if(!(is.numeric(myteam) | (is.character(myteam)))){
     stop('Input must be a vector of positive integers, strings, or a combination of both.')
   }
@@ -196,6 +195,7 @@ pokestats <- function(myteam, title="My Pokemon Team") {
   if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
     stop('Input must be between 1 and 386.')
   }
+
   x = length(myteam)
   if((x < 1) | (x > 6)){
     stop('Length of vector must be between 1 and 6.')

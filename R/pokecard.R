@@ -1,3 +1,41 @@
+library(httr)
+library(jsonlite)
+library(magick)
+library(pryr)
+library(hexSticker)
+library(ggplot2)
+library(RColorBrewer)
+
+
+#' Title
+#'
+#' @param n
+#'
+#' @return
+#' @export
+#'
+#' @examples
+pokegen <- function(n=6) {
+
+  #TEST
+  #n must be a VECTOR of NATURAL (INTEGER POSITIVE) from 1 to 6. Example:  pokegen(3)
+  #Delina test function
+  if(!(is.numeric(n))){
+    stop('Input must be a vector of positive integers.')
+  }
+  if(!(n %% 1 == 0)){
+    stop('Input must be an integer.')
+  }
+  if(is.numeric(n) & (n < 1 | n > 6)){
+    stop('Input must be between 1 and 6.')
+  }
+  poketeam <- pokedex(sample(seq(1,386),n))$name
+  return(poketeam)
+}
+
+myteam <- pokegen()
+
+
 #' Title
 #'
 #' @param myteam
@@ -9,19 +47,8 @@
 #'
 #' @examples
 
-#FUNCTION 3#########################################
 pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
 
-  #Packages
-  #run usethis::use_package("package_name")
-
-  httr::pokecard()
-  jsonlite::pokecard()
-  magick::pokecard()
-  pryr::pokecard()
-  hexSticker::pokecard()
-  ggplot2::pokecard()
-  RColorBrewer::pokecard()
 
 
   #TEST
@@ -30,9 +57,8 @@ pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
   #title must be a string
   #color must be a valid color or valid HEX code
 
-
-  #Delina test function
-  #does this handle a combination of both or only if its a vector of numbers or names?
+  #DELINA TEST
+  # #does this handle a combination of both or only if its a vector of numbers or names?
   # if(!(is.numeric(myteam) | (is.character(myteam)))){
   #   stop('Input must be a vector of positive integers, strings, or a combination of both.')
   # }
@@ -86,5 +112,5 @@ pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
   return(flashcard)
 }
 
-pokecard(myteam, color="LightBlue", title="Best Team")
+pokecard(myteam = c("golem","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
 

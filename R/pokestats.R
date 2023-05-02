@@ -7,18 +7,16 @@
 #' @export
 #'
 #' @examples
+
+library(httr)
+library(jsonlite)
+library(magick)
+library(pryr)
+library(hexSticker)
+library(ggplot2)
+library(RColorBrewer)
+
 pokestats <- function(myteam, title="My Pokemon Team") {
-
-  #Packages
-  #run usethis::use_package("package_name")
-
-  httr::pokestats()
-  jsonlite::pokestats()
-  magick::pokestats()
-  pryr::pokestats()
-  hexSticker::pokestats()
-  ggplot2::pokestats()
-  RColorBrewer::pokestats()
 
 
   #TEST

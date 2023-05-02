@@ -6,17 +6,16 @@
 #' @export
 #'
 #' @examples
-pokedex <- function(ids = seq(1,386)){
 
-  #Packages
-  #run usethis::use_package("package_name")
-  httr::pokedex()
-  jsonlite::pokedex()
-  magick::pokedex()
-  pryr::pokedex()
-  hexSticker::pokedex()
-  ggplot2::pokedex()
-  RColorBrewer::pokedex()
+library(httr)
+library(jsonlite)
+library(magick)
+library(pryr)
+library(hexSticker)
+library(ggplot2)
+library(RColorBrewer)
+
+pokedex <- function(ids = seq(1,386)){
 
   #TEST
   #ids must be a VECTOR of NATURAL (INTEGER POSITIVE) numbers from 1 to 386 OR   - Example: pokedex(c(1,4,3))
@@ -24,18 +23,18 @@ pokedex <- function(ids = seq(1,386)){
   #it can also be a mixture of both  Example: pokedex(c(1,"pikachu"))
 
   #Delina test function
-  # if(!(is.numeric(ids) | (is.character(ids)))){
-  #   stop('Input must be a vector of positive integers, strings, or a combination of both.')
-  # }
-  # if(!(ids %% 1 == 0)){
-  #   stop('Input must be an integer.')
-  # }
-  # if(is.numeric(ids) & (ids < 1 | ids > 386)){
-  #   stop('Input must be between 1 and 386.')
-  # }
-  # if(!(ids %in% pokemon_info$name)){
-  #   stop('Input must be a valid pokemon name.')
-  # }
+   if(!(is.numeric(ids) | (is.character(ids)))){
+     stop('Input must be a vector of positive integers, strings, or a combination of both.')
+   }
+   if(!(ids %% 1 == 0)){
+     stop('Input must be an integer.')
+   }
+   if(is.numeric(ids) & (ids < 1 | ids > 386)){
+     stop('Input must be between 1 and 386.')
+   }
+   if(!(ids %in% pokemon_info$name)){
+     stop('Input must be a valid pokemon name.')
+   }
 
   #change this name
   pokedex <- data.frame(NULL)
