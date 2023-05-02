@@ -11,28 +11,11 @@ library(tidyverse)
 
 #  ids = seq(1,386)
 #FUNCTION 1#################################################################
-pokedex <- function(x){
+pokedex <- function(ids = seq(1,386)){
   #TEST
   #ids must be a VECTOR of NATURAL (INTEGER POSITIVE) numbers from 1 to 386 OR   - Example: pokedex(c(1,4,3))
   #it can also be a vector of strings of the name of the pokemons (MUST BE A VALID NAME) - Example: pokedex(c("pikachu","charmander"))
   #it can also be a mixture of both  Example: pokedex(c(1,"pikachu"))
-
-  #Delina test function
-  checkid <-
-    {{ ids }} %>%
-    #if(is.vector() && is.numeric()) | ((is.vector() && is.character(){
-     # warning('Input must be a vector.')
-    #}
-    if(ids %% 1 == 0){
-      warning('Input must be an integer.')
-    }
-    if(ids >= 1 | ids <=386){
-      warning('Input must be between 1 and 386.')
-    }
-    if(ids %in% pokemon_info$name){
-      warning('Input must be a valid pokemon name.')
-    }
-  stopifnot(checkid)
 
   #change this name
   pokedex <- data.frame(NULL)
@@ -61,6 +44,23 @@ pokedex <- function(x){
 
     pokedex <- dplyr::bind_rows(pokedex, new_pokemon)
   }
+
+  #Delina test function
+  checkid <-
+    {{ ids }} %>%
+    if(is.vector() & is.numeric()) || ((is.vector() & is.character(){
+      warning('Input must be a vector.')
+    }
+    if(ids %% 1 == 0){
+      warning('Input must be an integer.')
+    }
+  if(ids >= 1 | ids <=386){
+    warning('Input must be between 1 and 386.')
+  }
+  if(ids %in% pokemon_info$name){
+    warning('Input must be a valid pokemon name.')
+  }
+  stopifnot(checkid)
 
   if (!('2' %in% names(pokedex))) {
     pokedex$'2' <- NA
