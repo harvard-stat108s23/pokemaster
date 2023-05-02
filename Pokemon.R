@@ -27,18 +27,18 @@ pokedex <- function(ids = seq(1,386)){
   #it can also be a mixture of both  Example: pokedex(c(1,"pikachu"))
 
   #DELINA TEST
-  # if(!(is.numeric(ids) | (is.character(ids)))){
-  #   stop('Input must be a vector of positive integers, strings, or a combination of both.')
-  # }
-  # if(!(ids %% 1 == 0)){
-  #   stop('Input must be an integer.')
-  # }
-  # if(is.numeric(ids) & (ids < 1 | ids > 386)){
+  if(!(is.numeric(ids) | (is.character(ids)))){
+    stop('Input must be a vector of positive integers, strings, or a combination of both.')
+  }
+  #if(!(ids %% 1 == 0)){
+  #  stop('Input must be an integer.')
+  #}
+  #if(is.numeric(ids) & (ids < 1 | ids > 386)){
   #   stop('Input must be between 1 and 386.')
-  # }
-  # if(!(ids %in% pokemon_info$name)){
-  #   stop('Input must be a valid pokemon name.')
-  # }
+  #}
+  #if(!(ids %in% pokemon_info$name)){
+  #  stop('Input must be a valid pokemon name.')
+  #}
 
   pokedex_df <- data.frame(NULL)
 
@@ -98,12 +98,13 @@ pokegen <- function(n=6) {
   if(is.numeric(n) & (n < 1 | n > 6)){
     stop('Input must be between 1 and 6.')
   }
-
   poketeam <- pokedex(sample(seq(1,386),n))$name
   return(poketeam)
 }
 
 myteam <- pokegen()
+
+pokegen(3)
 
 
 #FUNCTION 3#########################################
@@ -116,33 +117,33 @@ pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
   #color must be a valid color or valid HEX code
 
   #DELINA TEST
-  #does this handle a combination of both or only if its a vector of numbers or names?
-  if(!(is.numeric(myteam) | (is.character(myteam)))){
-    stop('Input must be a vector of positive integers, strings, or a combination of both.')
-  }
-  #not sure that this works
-  x = length(myteam)
-  if((x < 1) | (x > 6)){
-    stop('Length of vector must be between 1 and 6.')
-  }
-  #regular expression for hex
-  #regex = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
-  #if(color ))){
-    #stop('Color must be a valid color name or HEX code.')
-  #}
-  if(!(is.character(title))){
-    stop('Title must be a string.')
-  }
-  #should this say is.numeric first??
-  if(is.numeric(myteam) & (!(myteam %% 1 == 0))){
-    stop('Input must be an integer.')
-  }
-  if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
-    stop('Input must be a valid pokemon name.')
-  }
-  if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
-    stop('Input must be between 1 and 386.')
-  }
+  # #does this handle a combination of both or only if its a vector of numbers or names?
+  # if(!(is.numeric(myteam) | (is.character(myteam)))){
+  #   stop('Input must be a vector of positive integers, strings, or a combination of both.')
+  # }
+  # #not sure that this works
+  # x = length(myteam)
+  # if((x < 1) | (x > 6)){
+  #   stop('Length of vector must be between 1 and 6.')
+  # }
+  # #regular expression for hex
+  # #regex = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+  # #if(color ))){
+  # #stop('Color must be a valid color name or HEX code.')
+  # #}
+  # if(!(is.character(title))){
+  #   stop('Title must be a string.')
+  # }
+  # #should this say is.numeric first??
+  # if(is.numeric(myteam) & (!(myteam %% 1 == 0))){
+  #   stop('Input must be an integer.')
+  # }
+  # if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
+  #   stop('Input must be a valid pokemon name.')
+  # }
+  # if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
+  #   stop('Input must be between 1 and 386.')
+  # }
 
   ids <- pokedex(myteam)$id
   sprites_links <- images <- c()
@@ -170,40 +171,39 @@ pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
   return(flashcard)
 }
 
-pokecard(myteam, color="LightBlue", title="Best Team")
+pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
 
 
 #FUNCTION 4###################################
-pokestats <- function(myteam, title="My Pokemon Team") {
+pokestats <- function(myteam= c("golem","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), title="My Pokemon Team") {
+
 
   #TEST
   #myteam must be a vector of numbers between 1 and 386 or a vector of valid pokemon names or a combination of both
   #the length of the vector must be an integer between 1 and 6
   #title must be a string
 
-  #DELINA TEST
+  #Delina test function
   if(!(is.numeric(myteam) | (is.character(myteam)))){
     stop('Input must be a vector of positive integers, strings, or a combination of both.')
   }
-  #you said numbers but you mean integers right
-  if(is.numeric(myteam) & (!(myteam %% 1 == 0))){
-    stop('Input must be an integer.')
-  }
-  if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
-    stop('Input must be a valid pokemon name.')
-  }
-  if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
-    stop('Input must be between 1 and 386.')
-  }
-
+  # #you said numbers but you mean integers right
+  # if(is.numeric(myteam) & (!(myteam %% 1 == 0))){
+  #   stop('Input must be an integer.')
+  # }
+  # if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
+  #   stop('Input must be a valid pokemon name.')
+  # }
+  # if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
+  #   stop('Input must be between 1 and 386.')
+  # }
   x = length(myteam)
   if((x < 1) | (x > 6)){
     stop('Length of vector must be between 1 and 6.')
   }
-  if(!(is.character(myteam))){
-   stop('Title must be a string.')
+  if(!(is.character(title))){
+    stop('Title must be a string.')
   }
-
   #IMPROVE GRAPH
   #Pls improve title, axis, colors, legend name
   #Rename legend "variable" to "stat"
@@ -224,12 +224,12 @@ pokestats <- function(myteam, title="My Pokemon Team") {
     ggplot2::geom_bar(stat="identity", position = "dodge") +
     scale_fill_manual(values=colors) +
     ggtitle(title) #+
-    #theme_classic()
+  #theme_classic()
 
   return(barplot)
 }
 
-pokestats(myteam, "Best Team")
+pokestats(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), "Best Team")
 
 
 #HEX STICKER######################################################
