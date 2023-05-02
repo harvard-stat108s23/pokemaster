@@ -1,12 +1,3 @@
-#' Title
-#'
-#' @param ids
-#'
-#' @return
-#' @export
-#'
-#' @examples
-
 library(httr)
 library(jsonlite)
 library(magick)
@@ -15,6 +6,14 @@ library(hexSticker)
 library(ggplot2)
 library(RColorBrewer)
 
+#' Title
+#'
+#' @param ids
+#'
+#' @return
+#' @export
+#'
+#' @examples
 pokedex <- function(ids = seq(1,386)){
 
   #TEST
@@ -22,9 +21,9 @@ pokedex <- function(ids = seq(1,386)){
   #it can also be a vector of strings of the name of the pokemons (MUST BE A VALID NAME) - Example: pokedex(c("pikachu","charmander"))
   #it can also be a mixture of both  Example: pokedex(c(1,"pikachu"))
 
-  #Delina test function
+  #DELINA TEST
    if(!(is.numeric(ids) | (is.character(ids)))){
-     stop('Input must be a vector of positive integers, strings, or a combination of both.')
+    stop('Input must be a vector of positive integers, strings, or a combination of both.')
    }
    if(!(ids %% 1 == 0)){
      stop('Input must be an integer.')
@@ -36,8 +35,7 @@ pokedex <- function(ids = seq(1,386)){
      stop('Input must be a valid pokemon name.')
    }
 
-  #change this name
-  pokedex <- data.frame(NULL)
+  pokedex_df <- data.frame(NULL)
 
   for (id in ids) {
     response <- GET(paste0("https://pokeapi.co/api/v2/pokemon/",id,"/"))
@@ -61,20 +59,19 @@ pokedex <- function(ids = seq(1,386)){
           tidyr::pivot_wider(., names_from =slot, values_from = name)
       )
 
-    pokedex <- dplyr::bind_rows(pokedex, new_pokemon)
+    pokedex_df <- dplyr::bind_rows(pokedex_df, new_pokemon)
   }
 
-  if (!('2' %in% names(pokedex))) {
-    pokedex$'2' <- NA
+  if (!('2' %in% names(pokedex_df))) {
+    pokedex_df$'2' <- NA
   }
 
-  pokedex <- pokedex %>%
+  pokedex_df <- pokedex_df %>%
     dplyr::rename("special_attack" = 'special-attack',
                   "special_defense" = "special-defense",
                   "type_1" =  "1" ,"type_2" = "2")
 
-  return(pokedex)
-  #assign("pokedex", pokedex, envir = .GlobalEnv)   ##this creates a df named pokemodex (should it be done this way?) Not for now
+  return(pokedex_df)
 }
 
 pokedex()

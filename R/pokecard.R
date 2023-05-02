@@ -6,36 +6,6 @@ library(hexSticker)
 library(ggplot2)
 library(RColorBrewer)
 
-
-#' Title
-#'
-#' @param n
-#'
-#' @return
-#' @export
-#'
-#' @examples
-pokegen <- function(n=6) {
-
-  #TEST
-  #n must be a VECTOR of NATURAL (INTEGER POSITIVE) from 1 to 6. Example:  pokegen(3)
-  #Delina test function
-  if(!(is.numeric(n))){
-    stop('Input must be a vector of positive integers.')
-  }
-  if(!(n %% 1 == 0)){
-    stop('Input must be an integer.')
-  }
-  if(is.numeric(n) & (n < 1 | n > 6)){
-    stop('Input must be between 1 and 6.')
-  }
-  poketeam <- pokedex(sample(seq(1,386),n))$name
-  return(poketeam)
-}
-
-myteam <- pokegen()
-
-
 #' Title
 #'
 #' @param myteam
@@ -46,9 +16,7 @@ myteam <- pokegen()
 #' @export
 #'
 #' @examples
-
-pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
-
+pokecard <- function(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="#c60031", title="My Pokemon Team") {
 
 
   #TEST
@@ -112,5 +80,5 @@ pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
   return(flashcard)
 }
 
-pokecard(myteam = c("golem","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
+pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
 

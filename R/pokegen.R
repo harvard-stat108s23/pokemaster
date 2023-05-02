@@ -1,12 +1,3 @@
-#' Title
-#'
-#' @param n
-#'
-#' @return
-#' @export
-#'
-#' @examples
-
 library(httr)
 library(jsonlite)
 library(magick)
@@ -16,6 +7,14 @@ library(ggplot2)
 library(RColorBrewer)
 
 
+#' Title
+#'
+#' @param n
+#'
+#' @return
+#' @export
+#'
+#' @examples
 pokegen <- function(n=6) {
 
 
