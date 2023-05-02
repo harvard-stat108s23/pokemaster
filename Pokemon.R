@@ -1,21 +1,46 @@
-library(httr)
-library(jsonlite)
-library(magick)
-library(pryr)
-library(hexSticker)
-library(ggplot2)
-library(RColorBrewer)
-library(tidyverse)
+#library(httr)
+#library(jsonlite)
+#library(magick)
+#library(pryr)
+#library(hexSticker)
+#library(ggplot2)
+#library(RColorBrewer)
+
 
 #Need to comment our lines of code
 
 #  ids = seq(1,386)
 #FUNCTION 1#################################################################
 pokedex <- function(ids = seq(1,386)){
+
+  #Packages
+  #run usethis::use_package("package_name")
+  httr::pokedex()
+  jsonlite::pokedex()
+  magick::pokedex()
+  pryr::pokedex()
+  hexSticker::pokedex()
+  ggplot2::pokedex()
+  RColorBrewer::pokedex()
+  tidyverse::pokedex()
   #TEST
   #ids must be a VECTOR of NATURAL (INTEGER POSITIVE) numbers from 1 to 386 OR   - Example: pokedex(c(1,4,3))
   #it can also be a vector of strings of the name of the pokemons (MUST BE A VALID NAME) - Example: pokedex(c("pikachu","charmander"))
   #it can also be a mixture of both  Example: pokedex(c(1,"pikachu"))
+
+  #Delina test function
+  if(!(is.numeric(ids) | (is.character(ids)))){
+    stop('Input must be a vector of positive integers, strings, or a combination of both.')
+  }
+  if(!(ids %% 1 == 0)){
+    stop('Input must be an integer.')
+  }
+  if(is.numeric(ids) & (ids < 1 | ids > 386)){
+    stop('Input must be between 1 and 386.')
+  }
+  if(!(ids %in% pokemon_info$name)){
+    stop('Input must be a valid pokemon name.')
+  }
 
   #change this name
   pokedex <- data.frame(NULL)
@@ -45,23 +70,6 @@ pokedex <- function(ids = seq(1,386)){
     pokedex <- dplyr::bind_rows(pokedex, new_pokemon)
   }
 
-  #Delina test function
-  checkid <-
-    {{ ids }} %>%
-    if(is.vector() & is.numeric()) || ((is.vector() & is.character(){
-      warning('Input must be a vector.')
-    }
-    if(ids %% 1 == 0){
-      warning('Input must be an integer.')
-    }
-  if(ids >= 1 | ids <=386){
-    warning('Input must be between 1 and 386.')
-  }
-  if(ids %in% pokemon_info$name){
-    warning('Input must be a valid pokemon name.')
-  }
-  stopifnot(checkid)
-
   if (!('2' %in% names(pokedex))) {
     pokedex$'2' <- NA
   }
@@ -80,8 +88,29 @@ pokedex()
 
 #FUNCTION 2#######################################
 pokegen <- function(n=6) {
+
+  #Packages
+  #run usethis::use_package("package_name")
+  httr::pokegen()
+  jsonlite::pokegen()
+  magick::pokegen()
+  pryr::pokegen()
+  hexSticker::pokegen()
+  ggplot2::pokegen()
+  RColorBrewer::pokegen()
+
   #TEST
   #n must be a VECTOR of NATURAL (INTEGER POSITIVE) from 1 to 6. Example:  pokegen(3)
+  #Delina test function
+  if(!(is.numeric(n))){
+    stop('Input must be a vector of positive integers.')
+  }
+  if(!(n %% 1 == 0)){
+    stop('Input must be an integer.')
+  }
+  if(is.numeric(n) & (n < 1 | n > 6)){
+    stop('Input must be between 1 and 6.')
+  }
   poketeam <- pokedex(sample(seq(1,386),n))$name
   return(poketeam)
 }
@@ -91,11 +120,54 @@ myteam <- pokegen()
 
 #FUNCTION 3#########################################
 pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
+
+  #Packages
+  #run usethis::use_package("package_name")
+
+  httr::pokecard()
+  jsonlite::pokecard()
+  magick::pokecard()
+  pryr::pokecard()
+  hexSticker::pokecard()
+  ggplot2::pokecard()
+  RColorBrewer::pokecard()
+
+
   #TEST
   #myteam must be a vector of numbers between 1 and 386 or a vector of valid pokemon names or a combination of both
   #the length of the vector must be an integer between 1 and 6
   #title must be a string
   #color must be a valid color or valid HEX code
+
+
+  #Delina test function
+  #does this handle a combination of both or only if its a vector of numbers or names?
+  if(!(is.numeric(myteam) | (is.character(myteam)))){
+    stop('Input must be a vector of positive integers, strings, or a combination of both.')
+  }
+  #not sure that this works
+  x = length(myteam)
+  if((x < 1) | (x > 6)){
+    stop('Length of vector must be between 1 and 6.')
+  }
+  #regular expression for hex
+  #regex = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+  #if(color ))){
+    #stop('Color must be a valid color name or HEX code.')
+  #}
+  if(!(is.character(title))){
+    stop('Title must be a string.')
+  }
+  #should this say is.numeric first??
+  if(is.numeric(myteam) & (!(myteam %% 1 == 0))){
+    stop('Input must be an integer.')
+  }
+  if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
+    stop('Input must be a valid pokemon name.')
+  }
+  if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
+    stop('Input must be between 1 and 386.')
+  }
 
   ids <- pokedex(myteam)$id
   sprites_links <- images <- c()
@@ -128,11 +200,45 @@ pokecard(myteam, color="LightBlue", title="Best Team")
 
 #FUNCTION 4###################################
 pokestats <- function(myteam, title="My Pokemon Team") {
+
+  #Packages
+  #run usethis::use_package("package_name")
+
+  httr::pokestats()
+  jsonlite::pokestats()
+  magick::pokestats()
+  pryr::pokestats()
+  hexSticker::pokestats()
+  ggplot2::pokestats()
+  RColorBrewer::pokestats()
+
+
   #TEST
   #myteam must be a vector of numbers between 1 and 386 or a vector of valid pokemon names or a combination of both
   #the length of the vector must be an integer between 1 and 6
   #title must be a string
 
+  #Delina test function
+  if(!(is.numeric(myteam) | (is.character(myteam)))){
+    stop('Input must be a vector of positive integers, strings, or a combination of both.')
+  }
+  #you said numbers but you mean integers right
+  if(is.numeric(myteam) & (!(myteam %% 1 == 0))){
+    stop('Input must be an integer.')
+  }
+  if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
+    stop('Input must be a valid pokemon name.')
+  }
+  if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
+    stop('Input must be between 1 and 386.')
+  }
+  x = length(myteam)
+  if((x < 1) | (x > 6)){
+    stop('Length of vector must be between 1 and 6.')
+  }
+  if(!(is.character(myteam))){
+    stop('Title must be a string.')
+  }
   #IMPROVE GRAPH
   #Pls improve title, axis, colors, legend name
   #Rename legend "variable" to "stat"
@@ -159,7 +265,6 @@ pokestats <- function(myteam, title="My Pokemon Team") {
 }
 
 pokestats(myteam, "Best Team")
-
 
 
 #HEX STICKER######################################################
