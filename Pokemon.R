@@ -1,16 +1,15 @@
-#library(httr)
-#library(jsonlite)
-#library(magick)
-#library(pryr)
-#library(hexSticker)
-#library(ggplot2)
-#library(RColorBrewer)
+library(httr)
+library(jsonlite)
+library(magick)
+library(pryr)
+library(hexSticker)
+library(ggplot2)
+library(RColorBrewer)
 
 
 #Need to comment our lines of code
 
 #DELINA QUESTIONS
-#1. declare package dependencies for each function and delete libraries
 #2. figure out which packages are in which functions for test code
 #3. explain error when run devtools.. not an exported object. test code is commented out for r files
 #3. run through test code.. also ask about pokedex_df().. was that pushed? can also change now
@@ -23,16 +22,6 @@
 #FUNCTION 1#################################################################
 pokedex <- function(ids = seq(1,386)){
 
-  #Packages
-  #run usethis::use_package("package_name")
-  httr::pokedex()
-  jsonlite::pokedex()
-  magick::pokedex()
-  pryr::pokedex()
-  hexSticker::pokedex()
-  ggplot2::pokedex()
-  RColorBrewer::pokedex()
-  tidyverse::pokedex()
   #TEST
   #ids must be a VECTOR of NATURAL (INTEGER POSITIVE) numbers from 1 to 386 OR   - Example: pokedex(c(1,4,3))
   #it can also be a vector of strings of the name of the pokemons (MUST BE A VALID NAME) - Example: pokedex(c("pikachu","charmander"))
@@ -53,7 +42,7 @@ pokedex <- function(ids = seq(1,386)){
   }
 
   #change this name
-  pokedex <- data.frame(NULL)
+  pokedex_df <- data.frame(NULL)
 
   for (id in ids) {
     response <- GET(paste0("https://pokeapi.co/api/v2/pokemon/",id,"/"))
@@ -77,20 +66,19 @@ pokedex <- function(ids = seq(1,386)){
           tidyr::pivot_wider(., names_from =slot, values_from = name)
       )
 
-    pokedex <- dplyr::bind_rows(pokedex, new_pokemon)
+    pokedex_df <- dplyr::bind_rows(pokedex_df, new_pokemon)
   }
 
-  if (!('2' %in% names(pokedex))) {
-    pokedex$'2' <- NA
+  if (!('2' %in% names(pokedex_df))) {
+    pokedex_df$'2' <- NA
   }
 
-  pokedex <- pokedex %>%
+  pokedex_df <- pokedex_df %>%
     dplyr::rename("special_attack" = 'special-attack',
                   "special_defense" = "special-defense",
                   "type_1" =  "1" ,"type_2" = "2")
 
-  return(pokedex)
-  #assign("pokedex", pokedex, envir = .GlobalEnv)   ##this creates a df named pokemodex (should it be done this way?) Not for now
+  return(pokedex_df)
   }
 
 pokedex()
@@ -98,16 +86,6 @@ pokedex()
 
 #FUNCTION 2#######################################
 pokegen <- function(n=6) {
-
-  #Packages
-  #run usethis::use_package("package_name")
-  httr::pokegen()
-  jsonlite::pokegen()
-  magick::pokegen()
-  pryr::pokegen()
-  hexSticker::pokegen()
-  ggplot2::pokegen()
-  RColorBrewer::pokegen()
 
   #TEST
   #n must be a VECTOR of NATURAL (INTEGER POSITIVE) from 1 to 6. Example:  pokegen(3)
@@ -130,18 +108,6 @@ myteam <- pokegen()
 
 #FUNCTION 3#########################################
 pokecard <- function(myteam, color="#c60031", title="My Pokemon Team") {
-
-  #Packages
-  #run usethis::use_package("package_name")
-
-  httr::pokecard()
-  jsonlite::pokecard()
-  magick::pokecard()
-  pryr::pokecard()
-  hexSticker::pokecard()
-  ggplot2::pokecard()
-  RColorBrewer::pokecard()
-
 
   #TEST
   #myteam must be a vector of numbers between 1 and 386 or a vector of valid pokemon names or a combination of both
@@ -210,17 +176,6 @@ pokecard(myteam, color="LightBlue", title="Best Team")
 
 #FUNCTION 4###################################
 pokestats <- function(myteam, title="My Pokemon Team") {
-
-  #Packages
-  #run usethis::use_package("package_name")
-
-  httr::pokestats()
-  jsonlite::pokestats()
-  magick::pokestats()
-  pryr::pokestats()
-  hexSticker::pokestats()
-  ggplot2::pokestats()
-  RColorBrewer::pokestats()
 
   #TEST
   #myteam must be a vector of numbers between 1 and 386 or a vector of valid pokemon names or a combination of both
