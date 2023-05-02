@@ -24,10 +24,10 @@ pokedex <- function(x){
      # warning('Input must be a vector.')
     #}
     if(ids %% 1 == 0){
-      warning('Sample size less than 30.')
+      warning('Input must be an integer.')
     }
     if(ids >= 1 | ids <=386){
-      warning('Input must an integer between 1 and 386.')
+      warning('Input must be between 1 and 386.')
     }
     if(ids %in% pokemon_info$name){
       warning('Input must be a valid pokemon name.')
