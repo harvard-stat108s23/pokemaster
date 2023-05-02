@@ -41,7 +41,7 @@ pokestats <- function(myteam= c("golem","staryu", "exeggutor", "wynaut", "wailme
    if((x < 1) | (x > 6)){
      stop('Length of vector must be between 1 and 6.')
    }
-   if(!(is.character(myteam))){
+   if(!(is.character(title))){
      stop('Title must be a string.')
    }
   #IMPROVE GRAPH

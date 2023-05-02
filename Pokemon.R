@@ -9,13 +9,13 @@ library(RColorBrewer)
 
 #Need to comment our lines of code
 
-#DELINA QUESTIONS
-#1. graphs
-#2. figure out could not find function
-#3. regular expression for hexcode
-#4. devtools
-#5. data?
-#6. clean up file
+#DELINA TO DOS
+#1. go through each test in r script files, many not working. some are also dependent on previous functions.
+#2. does myteam <- pokegen belong to the end of function 2 or the start of function 3?
+#3. fix graph in function 4
+#3. create regular expression for hexcode/colors in function 3
+#4. possibly add the data file as show in r package documentation step 3
+#5. clean up + organize files
 
 
 #FUNCTION 1#################################################################

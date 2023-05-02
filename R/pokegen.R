@@ -35,3 +35,5 @@ pokegen <- function(n=6) {
  }
 
 myteam <- pokegen()
+
+pokegen(3)
