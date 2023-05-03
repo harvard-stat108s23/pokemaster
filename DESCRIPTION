@@ -20,3 +20,11 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: 
+    ggplot2,
+    hexSticker,
+    httr,
+    jsonlite,
+    magick,
+    pryr,
+    RColorBrewer
