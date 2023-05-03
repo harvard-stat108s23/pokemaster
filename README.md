@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# pokemaster <img src="pokemaster.png" align="right" height="139" />
+# Pokemaster <img src="pokemaster.png" align="right" height="139" />
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -13,6 +13,13 @@ pokemon team. You can also see the relevant stats of your team and
 create a graph of the pokemon team including the selected pokemons.
 
 ## Installation
+
+You can install pokemaster pacage from [GitHub](https://github.com/)
+with:
+
+``` r
+install.packages("pokemaster")
+```
 
 You can install the development version of pokemaster from
 [GitHub](https://github.com/) with:
@@ -71,9 +78,9 @@ pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"
 
 <img src="man/figures/README-pokecard-1.png" width="100%" />
 
-In the above example, we picked 6 pokemons – “pikachu”,“staryu”,
-“exeggutor”, “wynaut”, “wailmer”, “xatu”, customized the card color, and
-chose a name for the card.
+In the above example, we picked 6 Pokemons – “pikachu”,“staryu”,
+“exeggutor”, “wynaut”, “wailmer”, “xatu”, customized the card color to
+“LightBlue”, and chose a name for the card “Best Team”.
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
 up-to-date. `devtools::build_readme()` is handy for this. You could also

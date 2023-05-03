@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 ```
 
 
-# pokemaster <img src="pokemaster.png" align="right" height="139" />
+# Pokemaster <img src="pokemaster.png" align="right" height="139" />
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -22,6 +22,13 @@ knitr::opts_chunk$set(
 The goal of pokemaster is to explore the pokemon API. The users can first create a dataframe of the interested pokemons (our default is the 386 pokemons, the first 3 generations). It then helps you generate a pokemon team. You can also see the relevant stats of your team and create a graph of the pokemon team including the selected pokemons.
 
 ## Installation
+
+You can install pokemaster pacage from [GitHub](https://github.com/) with:
+
+``` r
+install.packages("pokemaster")
+```
+
 
 You can install the development version of pokemaster from [GitHub](https://github.com/) with:
 
@@ -44,27 +51,27 @@ library(pokemaster)
 ```
 
 
-```{r cars}
+```{r}
 pokedex(c("charizard"))
 ```
 ```{r}
 pokedex(c(6))
 ```
-In the above example, we illustrated how someone could retrieve the relevant information of the pokemon charizard by its name or by its id.
+In the above example, we illustrated how someone could retrieve the relevant information of the Pokemon "charizard" by its name or by its id.
 
 ## Example 2
 
-```{r}
+In example 2, we illustrate how you can easily create a team of Pokemons of your choice, and create a graphic out of it.
+
+```{r pokecard}
 pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
 ```
-```{r}
-png(file="pokecard_example.png")
-```
+
+In the above example, we picked 6 Pokemons --  "pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu", customized the card color to "LightBlue", and chose a name for the card "Best Team".
+
+
 
 You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
 
-You can also embed plots, for example:
 
 
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
