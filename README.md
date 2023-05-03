@@ -25,21 +25,21 @@ You can install the development version of pokemaster from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("pokemaster")
+# install.packages("devtools")
 devtools::install_github("harvard-stat108s23/project2-group3")
 ```
 
 ## About the Data
 
 The [pokemon API](https://pokeapi.co/) contains information on Pokémon,
-their moves, abilities, types, egg groups and much, much more. An API
-(Application Programming Interface) is a contract that allow developers
-to interact with an application through a set of interfaces.
+their moves, abilities, types, egg groups and much, much more.
 
+An API (Application Programming Interface) is a contract that allow
+developers to interact with an application through a set of interfaces.
 In this case, the application is a database of thousands of
 Pokémon-related objects, and the interfaces are URL links.
 
-## Example 1
+## Example 1 – Information Retrieval
 
 This is a basic example which shows you how to retrieve the relevant
 information we have about a specific Pokemon.
@@ -66,9 +66,11 @@ pokedex(c(6))
 
 In the above example, we illustrated how someone could retrieve the
 relevant information of the Pokemon “charizard” by its name or by its
-id.
+id. We can show its weight, height, base_experience, hp, attack,
+defense, special attact, special_defense, speed, and type 1 and type 2
+information.
 
-## Example 2
+## Example 2 – Pokecard Generation
 
 In example 2, we illustrate how you can easily create a team of Pokemons
 of your choice, and create a graphic out of it.
@@ -79,9 +81,11 @@ pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"
 
 <img src="man/figures/README-pokecard-1.png" width="100%" />
 
-In the above example, we picked 6 Pokemons – “pikachu”,“staryu”,
-“exeggutor”, “wynaut”, “wailmer”, “xatu”, customized the card color to
-“LightBlue”, and chose a name for the card “Best Team”.
+In the above example, we used the pokecard function to pick a team of
+Pokemonds. We picked 6 Pokemons – “pikachu”,“staryu”, “exeggutor”,
+“wynaut”, “wailmer”, “xatu”, customized the card color to “LightBlue”,
+and chose a name for the card “Best Team”. You can see the pokecard is
+generated accordingly.
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
 up-to-date. `devtools::build_readme()` is handy for this. You could also
