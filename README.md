@@ -18,7 +18,7 @@ You can install the development version of pokemaster from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
+# install.packages("pokemaster")
 devtools::install_github("harvard-stat108s23/project2-group3")
 ```
 
@@ -31,27 +31,44 @@ to interact with an application through a set of interfaces. In this
 case, the application is a database of thousands of Pokémon-related
 objects, and the interfaces are URL links.
 
-## Example
+## Example 1
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to retrieve the relevant
+information we have about a specific Pokemon.
 
 ``` r
 library(pokemaster)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+``` r
+pokedex(c("charizard"))
+#>   id      name weight height base_experience hp attack defense special_attack
+#> 1  6 charizard    905     17             267 78     84      78            109
+#>   special_defense speed type_1 type_2
+#> 1              85   100   fire flying
+```
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+pokedex(c(6))
+#>   id      name weight height base_experience hp attack defense special_attack
+#> 1  6 charizard    905     17             267 78     84      78            109
+#>   special_defense speed type_1 type_2
+#> 1              85   100   fire flying
+```
+
+In the above example, we illustrated how someone could retrieve the
+relevant information of the pokemon charizard by its name or by its id.
+
+## Example 2
+
+``` r
+pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+
+``` r
+png(file="pokecard_example.png")
 ```
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
@@ -61,8 +78,6 @@ example workflow can be found here:
 <https://github.com/r-lib/actions/tree/v1/examples>.
 
 You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
 
 In that case, don’t forget to commit and push the resulting figure
 files, so they display on GitHub and CRAN.

@@ -26,7 +26,7 @@ The goal of pokemaster is to explore the pokemon API. The users can first create
 You can install the development version of pokemaster from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
+# install.packages("pokemaster")
 devtools::install_github("harvard-stat108s23/project2-group3")
 ```
 
@@ -35,27 +35,36 @@ devtools::install_github("harvard-stat108s23/project2-group3")
 The [pokemon API](https://pokeapi.co/) contains information on Pokémon, their moves, abilities, types, egg groups and much, much more. An API (Application Programming Interface) is a contract that allow developers to interact with an application through a set of interfaces. In this case, the application is a database of thousands of Pokémon-related objects, and the interfaces are URL links.
 
 
-## Example
+## Example 1
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to retrieve the relevant information we have about a specific Pokemon.
 
 ```{r example}
 library(pokemaster)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
 ```{r cars}
-pokedex(c(1))
+pokedex(c("charizard"))
+```
+```{r cars}
+pokedex(c(6))
+```
+In the above example, we illustrated how someone could retrieve the relevant information of the pokemon charizard by its name or by its id.
+
+## Example 2
+
+```{r}
+pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
+```
+```{r}
+png(file="pokecard_example.png")
 ```
 
 You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
 
 You can also embed plots, for example:
 
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
+
 
 In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
