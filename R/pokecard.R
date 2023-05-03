@@ -1,22 +1,15 @@
-library(httr)
-library(jsonlite)
-library(magick)
-library(pryr)
-library(hexSticker)
-library(ggplot2)
-library(RColorBrewer)
-
 #' Title
 #'
 #' @param myteam
 #' @param color
-#' @param title
+#' @param title  TO EDIT
 #'
 #' @return
 #' @export
 #'
 #' @examples
-pokecard <- function(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="#c60031", title="My Pokemon Team") {
+
+pokecard <- function(myteam = pokegen(), color="#c60031", title="My Pokemon Team") {
 
 
   #TEST
@@ -54,7 +47,7 @@ pokecard <- function(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wail
   #   stop('Input must be between 1 and 386.')
   # }
 
-  ids <- pokedex(myteam)$id
+  ids <- pokemaster::pokedex(myteam)$id
   sprites_links <- images <- c()
   joined_image <- NULL
 
@@ -67,7 +60,7 @@ pokecard <- function(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wail
 
   for (i in 1:length(images)) {
     assign(images[i], magick::image_trim(magick::image_scale(magick::image_read(sprites_links[i]), "300x300")))
-    joined_image <- image_join(joined_image, get(images[i]))
+    joined_image <- magick::image_join(joined_image, get(images[i]))
   }
 
   flashcard <- magick::image_border(
@@ -80,5 +73,6 @@ pokecard <- function(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wail
   return(flashcard)
 }
 
-pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
+
+#pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")    SHOULD NOT BE HERE
 

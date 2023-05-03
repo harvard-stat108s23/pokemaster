@@ -1,21 +1,16 @@
-library(httr)
-library(jsonlite)
-library(magick)
-library(pryr)
-library(hexSticker)
-library(ggplot2)
-library(RColorBrewer)
-
-#' Title
+#' Title TO EDIT
 #'
 #' @param myteam
-#' @param title
+#' @param title  TO EDIT
 #'
 #' @return
 #' @export
 #'
 #' @examples
-pokestats <- function(myteam= c("golem","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), title="My Pokemon Team") {
+
+
+pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
+  name <- value <- variable <- NULL
 
 
   #TEST
@@ -57,19 +52,19 @@ pokestats <- function(myteam= c("golem","staryu", "exeggutor", "wynaut", "wailme
   #speed -> Speed
 
   colors <- palette(RColorBrewer::brewer.pal(6, "Set1"))
-  barplot <- pokedex(myteam) %>%
-    dplyr::select(c("name", "hp", "attack", "defense", "special_attack", "special_defense", "speed")) %>%
-    reshape2::melt(., id.vars = "name") %>%
-    ggplot2::ggplot(., aes(x = name, y = value, fill = variable)) +
+  barplot <- pokemaster::pokedex(myteam) |>
+    dplyr::select(c("name", "hp", "attack", "defense", "special_attack", "special_defense", "speed")) |>
+    reshape2::melt(id.vars = "name") |>
+    ggplot2::ggplot(ggplot2::aes(x = name, y = value, fill = variable)) +
     ggplot2::geom_bar(stat="identity", position = "dodge") +
-    scale_fill_manual(values=colors) +
-    ggtitle(title) #+
+    ggplot2::scale_fill_manual(values=colors) +
+    ggplot2::ggtitle(title) #+
   #theme_classic()
 
   return(barplot)
 }
 
-pokestats(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), "Best Team")
+#pokestats(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), "Best Team")   SHOULD NOT BE HERE
 
 
 
