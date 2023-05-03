@@ -20,8 +20,8 @@ pokedex <- function(ids = seq(1,386)){
    #  stop('Input must be a vector of positive integers, strings, or a combination of both.')
    #}
    #if(!(ids %% 1 == 0)){
-   #  stop('Input must be an integer.')
-   #}
+   # stop('Input must be an integer.')
+   }
    #if(is.numeric(ids) & (ids < 1 | ids > 386)){
    #   stop('Input must be between 1 and 386.')
    #}
@@ -72,3 +72,4 @@ pokedex <- function(ids = seq(1,386)){
 
 
 ##  pokedex((c(1,4, "pikachu")))   SHOULD NOT BE HERE
+
