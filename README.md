@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Pokemaster <img src="pokemaster.png" align="right" height="139" />
+# Pokemaster <img src="/man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -34,9 +34,10 @@ devtools::install_github("harvard-stat108s23/project2-group3")
 The [pokemon API](https://pokeapi.co/) contains information on Pokémon,
 their moves, abilities, types, egg groups and much, much more. An API
 (Application Programming Interface) is a contract that allow developers
-to interact with an application through a set of interfaces. In this
-case, the application is a database of thousands of Pokémon-related
-objects, and the interfaces are URL links.
+to interact with an application through a set of interfaces.
+
+In this case, the application is a database of thousands of
+Pokémon-related objects, and the interfaces are URL links.
 
 ## Example 1
 
