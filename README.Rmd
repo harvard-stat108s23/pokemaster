@@ -47,7 +47,7 @@ library(pokemaster)
 ```{r cars}
 pokedex(c("charizard"))
 ```
-```{r cars}
+```{r}
 pokedex(c(6))
 ```
 In the above example, we illustrated how someone could retrieve the relevant information of the pokemon charizard by its name or by its id.

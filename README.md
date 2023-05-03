@@ -57,27 +57,26 @@ pokedex(c(6))
 ```
 
 In the above example, we illustrated how someone could retrieve the
-relevant information of the pokemon charizard by its name or by its id.
+relevant information of the Pokemon “charizard” by its name or by its
+id.
 
 ## Example 2
+
+In example 2, we illustrate how you can easily create a team of Pokemons
+of your choice, and create a graphic out of it.
 
 ``` r
 pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-pokecard-1.png" width="100%" />
 
-``` r
-png(file="pokecard_example.png")
-```
+In the above example, we picked 6 pokemons – “pikachu”,“staryu”,
+“exeggutor”, “wynaut”, “wailmer”, “xatu”, customized the card color, and
+chose a name for the card.
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
 up-to-date. `devtools::build_readme()` is handy for this. You could also
 use GitHub Actions to re-render `README.Rmd` every time you push. An
 example workflow can be found here:
 <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
