@@ -10,7 +10,7 @@ Authors@R:
            comment = c(ORCID = "YOUR-ORCID-ID"))
            )
 Description: This package explores the pokemon API. The users can first create a dataframe of the interested pokemons (our default is the 386 pokemons, the first 3 generations). It then helps you generate a pokemon team. You can also see the relevant stats of your team and create a graph of the pokemon team including the selected pokemons.
-License: usethis::use_mit_license()
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
@@ -20,3 +20,16 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Imports: 
+    dplyr,
+    ggplot2,
+    httr,
+    jsonlite,
+    magick,
+    methods,
+    RColorBrewer,
+    reshape2,
+    tidyr

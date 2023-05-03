@@ -1,20 +1,13 @@
-library(httr)
-library(jsonlite)
-library(magick)
-library(pryr)
-library(hexSticker)
-library(ggplot2)
-library(RColorBrewer)
-
-
 #' Title
 #'
-#' @param n
+#' @param n TO EDIT
 #'
 #' @return
 #' @export
 #'
 #' @examples
+
+
 pokegen <- function(n=6) {
 
 
@@ -30,10 +23,8 @@ pokegen <- function(n=6) {
    if(is.numeric(n) & (n < 1 | n > 6)){
      stop('Input must be between 1 and 6.')
    }
-   poketeam <- pokedex(sample(seq(1,386),n))$name
+   poketeam <- pokemaster::pokedex(sample(seq(1,386),n))$name
    return(poketeam)
  }
 
-myteam <- pokegen()
-
-pokegen(3)
+#pokegen(3)    SHOULD NOT BE HERE
