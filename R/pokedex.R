@@ -21,7 +21,7 @@ pokedex <- function(ids = seq(1,386)){
    #}
    #if(!(ids %% 1 == 0)){
    # stop('Input must be an integer.')
-   }
+   #}
    #if(is.numeric(ids) & (ids < 1 | ids > 386)){
    #   stop('Input must be between 1 and 386.')
    #}
