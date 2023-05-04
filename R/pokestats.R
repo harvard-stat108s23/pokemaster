@@ -22,9 +22,10 @@ pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
    if(!(is.numeric(myteam) | (is.character(myteam)))){
      stop('Input must be a vector of positive integers, strings, or a combination of both.')
    }
-  # #you said numbers but you mean integers right
-  # if(is.numeric(myteam) & (!(myteam %% 1 == 0))){
-  #   stop('Input must be an integer.')
+  if(is.numeric(myteam)){
+    if(myteam %% 1 != 0){
+      stop('Input must be an integer.')
+    }}
   # }
   # if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
   #   stop('Input must be a valid pokemon name.')
