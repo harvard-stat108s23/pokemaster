@@ -1,5 +1,5 @@
 ---
-title: "pokemaster"
+title: "Introduction to 'Pokemaster'"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{pokemaster}
@@ -17,3 +17,39 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(pokemaster)
 ```
+
+## Overview of Functions
+
+Our package has 4 main functions. 
+
+The first function is *POKEDEX*. It is a function that creates dataframe with features like id, name, stats, type. The output of the function is a dataframe of all pokemons.
+
+The second function is *POKEGEN*. It takes an input of a vector of positive integer from 1 to 6. Example:  pokegen(3).
+
+# 2. POKETEAM: flashcard of the team
+# input: vector of up to 6 pokemons
+# output: image
+#
+# 3. POKESTATS: function that plots barplot of the basic stats for each pokemon_data
+# input: vector of up to 6 pokemons
+# output: ggbarplot
+# hitpoints, attack, defense, sp attack, special defense, speed
+
+# 4. POKEFILTER: function that ranks and filters ALL pokemon based on different criteria (stats, type, etc)
+# input: filter arguments
+# output: filtered dataframe
+
+# 5. team_generator (number of pokemons (6))
+# output: vector of n random pokemons (#pikachu, "sd", "as", "asds")
+
+## Example 1: 
+
+A 600 - 1000 word vignette with at least 3 examples that showcase the questions you can answer with
+the provided dataset and functions
+
+```{r}
+pokestats(myteam = c("pikachu","staryu"), "Best Team")
+```
+
+
+
