@@ -20,17 +20,17 @@ pokedex <- function(ids = seq(1,386)){
   #it can also be a mixture of both  Example: pokedex(c(1,"pikachu")) -- MUST BE INTEGERS OR STRINGS NOT COMBO
 
   #DELINA TEST
-  #if(!(is.numeric(ids) | (is.character(ids)))){
-  #  stop('Input must be a vector of positive integers or strings.')
-  #}
-  #if(is.numeric(ids)){
-  #  if(ids %% 1 != 0){
-  #    stop('Input must be an integer.')
-  #  }}
-  #if(is.numeric(ids)){
-  #  if(ids <= 1 | ids >= 386){
-  #    stop('Input must be between 1 and 386.')
-  #  }}
+  if(!(is.numeric(ids) | (is.character(ids)))){
+    stop('Input must be a vector of positive integers or strings.')
+  }
+  if(is.numeric(ids)){
+    if(ids %% 1 != 0){
+      stop('Input must be an integer.')
+    }}
+  if(is.numeric(ids)){
+    if(ids <= 1 | ids >= 386){
+      stop('Input must be between 1 and 386.')
+    }}
   #if(is.character(ids)){
   #  if((!(ids %in% new_pokemon$name))){
   #    stop('Input must be a valid pokemon name.')
