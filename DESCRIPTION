@@ -29,7 +29,6 @@ Imports:
     httr,
     jsonlite,
     magick,
-    methods,
     RColorBrewer,
     reshape2,
     tidyr

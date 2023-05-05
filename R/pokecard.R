@@ -1,13 +1,16 @@
-#' Title
+#' Create an image with the sprites of the pokemons
 #'
-#' @param myteam
-#' @param color
-#' @param title  TO EDIT
+#' `pokecard` creates a flashcard of the pokemon team
 #'
-#' @return
-#' @export
+#' @param myteam A vector with a length of up 6 to pokemons
+#' @param color A string, which should be a valid color. It determines the color of the border of the flashcard. By default it uses a red color.
+#' @param title A string. It determines the title at the top of the flashcard. By default, the title is 'My Pokemon Team'
 #'
+#' @return An external pointer of class 'magick-image'. It shows the flashcard along with a tibble describing the features of the image.
 #' @examples
+#' pokecard(myteam = c("pikachu","bulbasaur", "squirtle", "charmander", "pidgey", "psyduck"))
+#' @export
+
 
 pokecard <- function(myteam = pokegen(), color="#c60031", title="My Pokemon Team") {
 
@@ -72,7 +75,3 @@ pokecard <- function(myteam = pokegen(), color="#c60031", title="My Pokemon Team
   flashcard <- magick::image_annotate(flashcard, text = title, size = 15, gravity = "north", location="-0+3")
   return(flashcard)
 }
-
-
-#pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")    SHOULD NOT BE HERE
-

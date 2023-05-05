@@ -2,13 +2,19 @@
 % Please edit documentation in R/pokegen.R
 \name{pokegen}
 \alias{pokegen}
-\title{Title}
+\title{Generate a team of pokemons}
 \usage{
 pokegen(n = 6)
 }
 \arguments{
-\item{n}{}
+\item{n}{Integer. Number of pokemons to generate. Can be from 1 pokemon to 6 pokemons}
+}
+\value{
+Vector of names of the \code{n} pokemons generated
 }
 \description{
-Title
+\code{pokegen} creates a vector of \code{n} random pokemons
+}
+\examples{
+pokegen(3)
 }

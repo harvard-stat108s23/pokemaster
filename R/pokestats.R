@@ -1,16 +1,19 @@
-#' Title TO EDIT
+#' Create a barplot of the main stats of the pokemons
 #'
-#' @param myteam
-#' @param title  TO EDIT
+#' `pokestats` creates a barplot of the stats of the pokemons
 #'
-#' @return
-#' @export
+#' @param myteam A vector with a length of up 6 to pokemons
+#' @param title  A string. It determines the title at the top of the plot By default, the title is 'My Pokemon Team'
 #'
+#' @return barplot of the main stats for each pokemon
 #' @examples
+#' pokestats(myteam = c("pikachu","bulbasaur", "squirtle", "charmander", "pidgey", "psyduck"))
+#' @export
+
 
 
 pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
-  name <- value <- variable <- NULL
+  name <- value <- variable <- palette <- NULL
 
 
   #TEST
@@ -19,13 +22,13 @@ pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
   #title must be a string
 
   #Delina test function
-   if(!(is.numeric(myteam) | (is.character(myteam)))){
-     stop('Input must be a vector of positive integers, strings, or a combination of both.')
-   }
-  if(is.numeric(myteam)){
-    if(myteam %% 1 != 0){
-      stop('Input must be an integer.')
-    }}
+   #if(!(is.numeric(myteam) | (is.character(myteam)))){
+  #   stop('Input must be a vector of positive integers, strings, or a combination of both.')
+  # }
+  #if(is.numeric(myteam)){
+  #  if(myteam %% 1 != 0){
+  #    stop('Input must be an integer.')
+  #  }}
   # }
   # if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
   #   stop('Input must be a valid pokemon name.')
@@ -33,13 +36,13 @@ pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
   # if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
   #   stop('Input must be between 1 and 386.')
   # }
-   x = length(myteam)
-   if((x < 1) | (x > 6)){
-     stop('Length of vector must be between 1 and 6.')
-   }
-   if(!(is.character(title))){
-     stop('Title must be a string.')
-   }
+  # x = length(myteam)
+  # if((x < 1) | (x > 6)){
+  #   stop('Length of vector must be between 1 and 6.')
+  # }
+  # if(!(is.character(title))){
+  #   stop('Title must be a string.')
+  # }
   #IMPROVE GRAPH
   #Pls improve title, axis, colors, legend name
   #Rename legend "variable" to "stat"
@@ -65,7 +68,6 @@ pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
   return(barplot)
 }
 
-#pokestats(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), "Best Team")   SHOULD NOT BE HERE
 
 
 

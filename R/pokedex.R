@@ -1,14 +1,18 @@
-#' Title
+#' Create a dataframe with the characteristics of the pokemons
 #'
-#' @param ids TO EDIT
+#' `pokedex` creates a dataframe with stats of the corresponding pokemons
+#' @param ids Vector of integers corresponding to the id of the pokemon in the pokedex. By default, it extracts the information of the pokemons of the first 3 generations, which corresponds to the ids 1-386
 #'
-#' @return
-#' @export
-#'
+#' @return a data frame with the stats of the pokemons
+
 #' @examples
+#' pokedex(c("bulbasaur", "charmander", "squirtle"))
+#' pokedex(c(1,4,7))
+#' @export
+
 
 pokedex <- function(ids = seq(1,386)){
-  stat <- name <- base_stat <- type <- NULL
+  stat <- name <- base_stat <- type <- slot <- NULL
 
   #TEST
   #ids must be a VECTOR of NATURAL (INTEGER POSITIVE) numbers from 1 to 386 OR   - Example: pokedex(c(1,4,3))
@@ -16,17 +20,17 @@ pokedex <- function(ids = seq(1,386)){
   #it can also be a mixture of both  Example: pokedex(c(1,"pikachu")) -- MUST BE INTEGERS OR STRINGS NOT COMBO
 
   #DELINA TEST
-  if(!(is.numeric(ids) | (is.character(ids)))){
-    stop('Input must be a vector of positive integers or strings.')
-  }
-  if(is.numeric(ids)){
-    if(ids %% 1 != 0){
-      stop('Input must be an integer.')
-    }}
-  if(is.numeric(ids)){
-    if(ids < 1 | ids > 386){
-      stop('Input must be between 1 and 386.')
-    }}
+  #if(!(is.numeric(ids) | (is.character(ids)))){
+  #  stop('Input must be a vector of positive integers or strings.')
+  #}
+  #if(is.numeric(ids)){
+  #  if(ids %% 1 != 0){
+  #    stop('Input must be an integer.')
+  #  }}
+  #if(is.numeric(ids)){
+  #  if(ids <= 1 | ids >= 386){
+  #    stop('Input must be between 1 and 386.')
+  #  }}
   #if(is.character(ids)){
   #  if((!(ids %in% new_pokemon$name))){
   #    stop('Input must be a valid pokemon name.')
@@ -71,9 +75,3 @@ pokedex <- function(ids = seq(1,386)){
 
   return(pokedex_df)
 }
-
-
-
-
-##  pokedex((c(1,4, "pikachu")))   SHOULD NOT BE HERE
-

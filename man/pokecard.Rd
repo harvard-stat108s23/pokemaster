@@ -2,17 +2,23 @@
 % Please edit documentation in R/pokecard.R
 \name{pokecard}
 \alias{pokecard}
-\title{Title}
+\title{Create an image with the sprites of the pokemons}
 \usage{
-pokecard(
-  myteam = c("pikachu", "staryu", "exeggutor", "wynaut", "wailmer", "xatu"),
-  color = "#c60031",
-  title = "My Pokemon Team"
-)
+pokecard(myteam = pokegen(), color = "#c60031", title = "My Pokemon Team")
 }
 \arguments{
-\item{title}{}
+\item{myteam}{A vector with a length of up 6 to pokemons}
+
+\item{color}{A string, which should be a valid color. It determines the color of the border of the flashcard. By default it uses a red color.}
+
+\item{title}{A string. It determines the title at the top of the flashcard. By default, the title is 'My Pokemon Team'}
+}
+\value{
+An external pointer of class 'magick-image'. It shows the flashcard along with a tibble describing the features of the image.
 }
 \description{
-Title
+\code{pokecard} creates a flashcard of the pokemon team
+}
+\examples{
+pokecard(myteam = c("pikachu","bulbasaur", "squirtle", "charmander", "pidgey", "psyduck"))
 }

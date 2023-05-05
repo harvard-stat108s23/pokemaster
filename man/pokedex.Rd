@@ -2,13 +2,20 @@
 % Please edit documentation in R/pokedex.R
 \name{pokedex}
 \alias{pokedex}
-\title{Title}
+\title{Create a dataframe with the characteristics of the pokemons}
 \usage{
 pokedex(ids = seq(1, 386))
 }
 \arguments{
-\item{ids}{}
+\item{ids}{Vector of integers corresponding to the id of the pokemon in the pokedex. By default, it extracts the information of the pokemons of the first 3 generations, which corresponds to the ids 1-386}
+}
+\value{
+a data frame with the stats of the pokemons
 }
 \description{
-Title
+\code{pokedex} creates a dataframe with stats of the corresponding pokemons
+}
+\examples{
+pokedex(c("bulbasaur", "charmander", "squirtle"))
+pokedex(c(1,4,7))
 }

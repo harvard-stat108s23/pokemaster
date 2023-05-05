@@ -2,16 +2,21 @@
 % Please edit documentation in R/pokestats.R
 \name{pokestats}
 \alias{pokestats}
-\title{Title}
+\title{Create a barplot of the main stats of the pokemons}
 \usage{
-pokestats(
-  myteam = c("golem", "staryu", "exeggutor", "wynaut", "wailmer", "xatu"),
-  title = "My Pokemon Team"
-)
+pokestats(myteam = pokegen(), title = "My Pokemon Team")
 }
 \arguments{
-\item{title}{}
+\item{myteam}{A vector with a length of up 6 to pokemons}
+
+\item{title}{A string. It determines the title at the top of the plot By default, the title is 'My Pokemon Team'}
+}
+\value{
+barplot of the main stats for each pokemon
 }
 \description{
-Title
+\code{pokestats} creates a barplot of the stats of the pokemons
+}
+\examples{
+pokestats(myteam = c("pikachu","bulbasaur", "squirtle", "charmander", "pidgey", "psyduck"))
 }
