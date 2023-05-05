@@ -18,38 +18,104 @@ knitr::opts_chunk$set(
 library(pokemaster)
 ```
 
+
 ## Overview of Functions
 
 Our package has 4 main functions. 
 
-The first function is *POKEDEX*. It is a function that creates dataframe with features like id, name, stats, type. The output of the function is a dataframe of all pokemons.
+- The first function is **POKEDEX**. It is a function that creates dataframe with features like id, name, stats, type. The output of the function is a dataframe of all pokemons.
 
-The second function is *POKEGEN*. It takes an input of a vector of positive integer from 1 to 6. Example:  pokegen(3).
+- The second function is **POKEGEN**. It takes an input of a vector of positive integer from 1 to 6. Example:  pokegen(3), and generate that number of pokemons. 
 
-# 2. POKETEAM: flashcard of the team
-# input: vector of up to 6 pokemons
-# output: image
-#
-# 3. POKESTATS: function that plots barplot of the basic stats for each pokemon_data
-# input: vector of up to 6 pokemons
-# output: ggbarplot
-# hitpoints, attack, defense, sp attack, special defense, speed
+- The third function is **POKECARD**, which generates a flashcard of the team. It takes the input of vector of up to 6 Pokemons and has an output of an image. 
 
-# 4. POKEFILTER: function that ranks and filters ALL pokemon based on different criteria (stats, type, etc)
-# input: filter arguments
-# output: filtered dataframe
+- The forth function is **POKESTATS**. It is a function that plots barplot of the basic stats for each pokemon_data. It take an input vector of up to 6 pokemons, and generates an output ggbarplot. We provide visualization for hitpoints, attack, defense, sp attack, special defense, speed.
 
-# 5. team_generator (number of pokemons (6))
-# output: vector of n random pokemons (#pikachu, "sd", "as", "asds")
+## Example 1 Pokemon Stats Comparison
 
-## Example 1: 
+The first example illustrates how our package can answer a question like 
 
-A 600 - 1000 word vignette with at least 3 examples that showcase the questions you can answer with
-the provided dataset and functions
+- "How is Pikachu's stats compared with Eevee?"
+
+This can be best answered by the **POKEDEX** function so we have see the stats of the two Pokemons, as well as the **POKESTATS** function because it nicely provides visualization of the key stats of the Pokemons.
 
 ```{r}
-pokestats(myteam = c("pikachu","staryu"), "Best Team")
+pokedex(c("pikachu", "eevee"))
 ```
 
+Through this dataframe, we can directly compare the above two Pokemons on the key stats such as weight, height, base_experience, hp, attack, defense, special_attack, special_defense, speed, and their types.
 
+```{r}
+pokestats(myteam = c("pikachu","eevee"), "Pikachu v.s. Eevee")
+```
+
+According to the above visualization, Eevee has a higher hp, about the same attack, higher defense, less special attack, more special defense, and much less speed than Pikachu. 
+
+## Example 2 Pokecard Generation
+
+The second example illustrates how our package can answer a question like 
+
+- "I am a Pokemon enthusiast. How can I generate a few postcards for my favorite pokemon team: pikachu, eevee, charizard, snorlax, ditto, and piplup. I want a postcard for the first three, the second three, and one for the whole team."
+
+This can be best answered by the **POKECARD** function because it generates a flashcard of the selected Pokemon. 
+
+```{r}
+pokecard(myteam = c("pikachu", "eevee", "charizard"), 
+         color="LightBlue", title="Pikachu, Eevee, Charizard")
+```
+```{r}
+pokecard(myteam = c("snorlax", "ditto", "piplup"), 
+         color="LightBlue", title="Snorlax, Ditto, Piplup")
+```
+
+```{r}
+pokecard(myteam = 
+           c("pikachu","eevee", "charizard", "snorlax", "ditto", "piplup"), 
+              color="LightBlue", title="Whole Team")
+```
+
+Through the above code, we can help this Pokemon fan create their favorite postcard!!
+
+## Example 3 Team Stat Comparison
+
+The third example illustrates how our package can answer a question like 
+
+- "I want to see how my favorite Pokemon team A: pikachu, eevee, charizard, snorlax, ditto, and piplup compare to another team B, which is composed of squirtle, mew, bulbasaur, lopunny, gible, and psyduck."
+
+This question can be answered by showing the stats, creating the postcard to see how the teams are different visually, and by the comparing their stats in a bar plot.
+
+```{r}
+pokedex(c("pikachu","eevee", "charizard", "snorlax", "ditto", "piplup"))
+```
+
+```{r}
+pokedex(c("squirtle","mew", "bulbasaur", "lopunny", "gible", "psyduck"))
+```
+
+From the above two tables, we can compare and contrast the specific stat that the pokemon fan is interested in within the two teams and across the teams.
+
+```{r}
+pokecard(myteam = 
+           c("pikachu","eevee", "charizard", "snorlax", "ditto", "piplup"), 
+              color="LightBlue", title="Team 1")
+```
+```{r}
+pokecard(myteam = 
+           c("squirtle","mew", "bulbasaur", "lopunny", "gible", "psyduck"), 
+              color="LightBlue", title="Team 2")
+```
+
+We also generated beautiful graphics for the two teams.
+
+```{r}
+pokestats(myteam = c("pikachu","eevee", "charizard", "snorlax", "ditto", "piplup"),
+          "Team 1")
+```
+
+```{r}
+pokestats(myteam = c("squirtle","mew", "bulbasaur", "lopunny", "gible", "psyduck"),
+          "Team 2")
+```
+
+From the above two bar plots, we can see how each of the Pokemons in each team can have varying capacities in different stats. From the above analysis, we cannot conclude that any of the team has much higher stats than the other. 
 
