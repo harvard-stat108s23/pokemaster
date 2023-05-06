@@ -1,9 +1,9 @@
-#' Create a dataframe with the characteristics of the pokemons
+#' Obtain the information and stats of the pokemons in a data frame
 #'
-#' `pokedex` creates a dataframe with stats of the corresponding pokemons
-#' @param ids Vector of integers corresponding to the id of the pokemon in the pokedex. By default, it extracts the information of the pokemons of the first 3 generations, which corresponds to the ids 1-386
+#' `pokedex` creates a dataframe with information and stats of the corresponding pokemons
+#' @param ids Vector of integers or pokemon names. By default, it extracts the information and stats of the pokemons of the first 3 generations, which corresponds to the numeric ids 1 to 386
 #'
-#' @return a data frame with the stats of the pokemons
+#' @return Data frame with the information and stats of the pokemons
 
 #' @examples
 #' pokedex(c("bulbasaur", "charmander", "squirtle"))
@@ -12,37 +12,46 @@
 
 
 pokedex <- function(ids = seq(1,386)){
-  stat <- name <- base_stat <- type <- slot <- NULL
 
-  #TEST
-  #ids must be a VECTOR of NATURAL (INTEGER POSITIVE) numbers from 1 to 386 OR   - Example: pokedex(c(1,4,3))
-  #it can also be a vector of strings of the name of the pokemons (MUST BE A VALID NAME) - Example: pokedex(c("pikachu","charmander"))
-  #it can also be a mixture of both  Example: pokedex(c(1,"pikachu")) -- MUST BE INTEGERS OR STRINGS NOT COMBO
+# ---------- Check inputs
 
-  #DELINA TEST
-  if(!(is.numeric(ids) | (is.character(ids)))){
-    stop('Input must be a vector of positive integers or strings.')
+  # Check that the input is a vector of integers or strings
+  if (!(is.numeric(ids)|is.character(ids))) {
+    stop('`ids` must be a vector of integers or valid pokemon names')
   }
-  if(is.numeric(ids)){
-    if(ids %% 1 != 0){
-      stop('Input must be an integer.')
-    }}
-  if(is.numeric(ids)){
-    if(ids <= 1 | ids >= 386){
-      stop('Input must be between 1 and 386.')
-    }}
-  #if(is.character(ids)){
-  #  if((!(ids %in% new_pokemon$name))){
-  #    stop('Input must be a valid pokemon name.')
-  #  }}
 
+  # Check that, if the input is a numeric vector, all values must be integers
+  if(is.numeric(ids)){
+    if(!all(ids %% 1 == 0)){
+      stop('If using numeric values, all of them must be integers')
+    }}
+
+  # Check that, if the input is a numeric vector, the values must be between 1 and 386
+  if(is.numeric(ids)){
+    if(!all(ids >= 1 & ids <= 386)){
+      stop('If using numeric values, they must be between 1 and 386')
+    }}
+
+  # Check that, if the input is a string vector, the values are valid pokemon names
+  if(is.character(ids)){
+    if((!all(suppressWarnings(ids[is.na(as.numeric(ids))]) %in% pokedex_df$name))){
+      stop('If using pokemons names, all values must be valid pokemon names')
+    }}
+
+
+# ---------- Function
+
+  # Instantiate NULL variables
+  stat <- name <- base_stat <- type <- slot <- NULL
   pokedex_df <- data.frame(NULL)
 
+  # Loop through all the ids, extract the content using the API, and parse the data to build the data frame
   for (id in ids) {
     response <- httr::GET(paste0("https://pokeapi.co/api/v2/pokemon/",id,"/"))
     content <- httr::content(response, as = "text")
     pokemon_info <- jsonlite::fromJSON(content)[c("id", "name", "weight", "height", "base_experience", "stats", "types")]
 
+    # Information for one pokemon: wrangles the relevant information and builds a dataframe
     new_pokemon <- data.frame(id = pokemon_info$id,
                               name = pokemon_info$name,
                               weight = pokemon_info$weight,
@@ -60,14 +69,16 @@ pokedex <- function(ids = seq(1,386)){
           tidyr::pivot_wider(names_from =slot, values_from = name)
       )
 
+    # Append the information
     pokedex_df <- dplyr::bind_rows(pokedex_df, new_pokemon)
   }
 
-
+  # To avoid an error, in case the pokemon only has one 'type'
   if (!('2' %in% names(pokedex_df))) {
     pokedex_df$'2' <- NA
   }
 
+  # Rename variables
   pokedex_df <- pokedex_df |>
     dplyr::rename("special_attack" = 'special-attack',
                   "special_defense" = "special-defense",
@@ -75,3 +86,14 @@ pokedex <- function(ids = seq(1,386)){
 
   return(pokedex_df)
 }
+
+
+#pokedex(c(1,2,3))
+#pokedex(c(1))
+#pokedex(-1)
+
+#pokedex("pikachu")
+#pokedex(c("pikachu","bulbasaur"))
+
+#pokedex(c("pikachu",1,2))
+

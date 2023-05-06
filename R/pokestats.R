@@ -1,48 +1,21 @@
-#' Create a barplot of the main stats of the pokemons
+#'  Barplot of the main stats of the pokemons
 #'
-#' `pokestats` creates a barplot of the stats of the pokemons
+#' `pokestats` creates a barplot of the main stats of the pokemons (HP, Attack, Defense, Sp. Attack, Sp. Defense and Speed)
 #'
-#' @param myteam A vector with a length of up 6 to pokemons
+#' @param myteam A vector with a length of up 6 to pokemons. It can be valid numeric ids or valid pokemon names. By default, it creates a barplot of a team of 6 random pokemons.
 #' @param title  A string. It determines the title at the top of the plot By default, the title is 'My Pokemon Team'
 #'
-#' @return barplot of the main stats for each pokemon
+#' @return ggplot2 object, which contains the barplot of the main stats for each pokemon
 #' @examples
 #' pokestats(myteam = c("pikachu","bulbasaur", "squirtle", "charmander", "pidgey", "psyduck"))
+#' pokestats(myteam = c("charmander","charmeleon", "charizard"))
 #' @export
 
 
 
 pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
-  name <- value <- variable <- palette <- NULL
 
 
-  #TEST
-  #myteam must be a vector of numbers between 1 and 386 or a vector of valid pokemon names or a combination of both
-  #the length of the vector must be an integer between 1 and 6
-  #title must be a string
-
-  #Delina test function
-   #if(!(is.numeric(myteam) | (is.character(myteam)))){
-  #   stop('Input must be a vector of positive integers, strings, or a combination of both.')
-  # }
-  #if(is.numeric(myteam)){
-  #  if(myteam %% 1 != 0){
-  #    stop('Input must be an integer.')
-  #  }}
-  # }
-  # if(is.character(myteam) & (!(myteam %in% pokemon_info$name))){
-  #   stop('Input must be a valid pokemon name.')
-  # }
-  # if(is.numeric(myteam) & (myteam < 1 | myteam > 386)){
-  #   stop('Input must be between 1 and 386.')
-  # }
-  # x = length(myteam)
-  # if((x < 1) | (x > 6)){
-  #   stop('Length of vector must be between 1 and 6.')
-  # }
-  # if(!(is.character(title))){
-  #   stop('Title must be a string.')
-  # }
   #IMPROVE GRAPH
   #Pls improve title, axis, colors, legend name
   #Rename legend "variable" to "stat"
@@ -55,6 +28,48 @@ pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
   #special_defense -> Special Defense
   #speed -> Speed
 
+# ---------- Check inputs
+
+  # Check that the input is a vector of integers or strings
+  if (!(is.numeric(myteam)|is.character(myteam))) {
+    stop('`myteam` must be a vector of integers or valid pokemon names')
+  }
+
+  # Check that, if the input is a numeric vector, all values must be integers
+  if(is.numeric(myteam)){
+    if(!all(myteam %% 1 == 0)){
+      stop('If using numeric values, all of them must be integers')
+    }}
+
+  # Check that, if the input is a numeric vector, the values must be between 1 and 386
+  if(is.numeric(myteam)){
+    if(!all(myteam >= 1 & myteam <= 386)){
+      stop('If using numeric values, they must be between 1 and 386')
+    }}
+
+  # Check that, if the input is a string vector, the values are valid pokemon names
+  if(is.character(myteam)){
+    if((!all(suppressWarnings(myteam[is.na(as.numeric(myteam))]) %in% pokedex_df$name))){
+      stop('If using pokemons names, all values must be valid pokemon names')
+    }}
+
+  # Check that the pokemon team has between 1 and 6 pokemons
+  if(!(length(myteam) >= 1 & length(myteam) <= 6)){
+    stop('The team must have between 1 and 6 pokemons')
+  }
+
+  # Check that the title is a string
+  if(!(is.character(title))){
+    stop('`Title` must be a string')
+  }
+
+
+# ---------- Function
+
+  # Instantiate NULL and empty elements
+  name <- value <- variable <- palette <- NULL
+
+  # Create the barplot using ggplot2, previously wrangling the data
   colors <- palette(RColorBrewer::brewer.pal(6, "Set1"))
   barplot <- pokemaster::pokedex(myteam) |>
     dplyr::select(c("name", "hp", "attack", "defense", "special_attack", "special_defense", "speed")) |>
@@ -69,5 +84,10 @@ pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
 }
 
 
+
+#pokestats(c(1,2,3))
+#pokestats(c("bulbasaur","pikachu"))
+#pokestats(c(1,2,"pikachu"))
+#pokestats(c(1,2,"pikachu"), title = "asd")
 
 
