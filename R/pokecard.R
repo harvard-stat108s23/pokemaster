@@ -37,7 +37,7 @@ pokecard <- function(myteam = pokegen(), title="My Pokemon Team", color="#c60031
   # Check that, if the input is a string vector, the values are valid pokemon names
   if(is.character(myteam)){
     if((!all(suppressWarnings(myteam[is.na(as.numeric(myteam))]) %in% pokedex_df$name))){
-      stop('If using pokemons names, all values must be valid pokemon names')
+      stop('If using pokemons names, all values must be valid pokemon names from the first 3 generations')
     }}
 
   # Check that the pokemon team has between 1 and 6 pokemons
@@ -51,7 +51,7 @@ pokecard <- function(myteam = pokegen(), title="My Pokemon Team", color="#c60031
   }
 
   # Check that the color is valid
-  if(!(tryCatch(is.matrix(col2rgb(color)), error = function(e) FALSE))){
+  if(!(tryCatch(is.matrix(grDevices::col2rgb(color)), error = function(e) FALSE))){
     stop('`Color` must be a valid color')
   }
 

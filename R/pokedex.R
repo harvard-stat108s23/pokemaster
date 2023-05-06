@@ -35,7 +35,7 @@ pokedex <- function(ids = seq(1,386)){
   # Check that, if the input is a string vector, the values are valid pokemon names
   if(is.character(ids)){
     if((!all(suppressWarnings(ids[is.na(as.numeric(ids))]) %in% pokedex_df$name))){
-      stop('If using pokemons names, all values must be valid pokemon names')
+      stop('If using pokemons names, all values must be valid pokemon names from the first 3 generations')
     }}
 
 
