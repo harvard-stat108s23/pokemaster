@@ -2,23 +2,24 @@
 % Please edit documentation in R/pokecard.R
 \name{pokecard}
 \alias{pokecard}
-\title{Create an image with the sprites of the pokemons}
+\title{Create a flashcard of the pokemon team}
 \usage{
-pokecard(myteam = pokegen(), color = "#c60031", title = "My Pokemon Team")
+pokecard(myteam = pokegen(), title = "My Pokemon Team", color = "#c60031")
 }
 \arguments{
-\item{myteam}{A vector with a length of up 6 to pokemons}
-
-\item{color}{A string, which should be a valid color. It determines the color of the border of the flashcard. By default it uses a red color.}
+\item{myteam}{A vector with a length of up 6 to pokemons. It can be valid numeric ids or valid pokemon names. By default, it creates a flashcard of a team of 6 random pokemons.}
 
 \item{title}{A string. It determines the title at the top of the flashcard. By default, the title is 'My Pokemon Team'}
+
+\item{color}{A string, which should be a valid color. It determines the color of the border of the flashcard.}
 }
 \value{
 An external pointer of class 'magick-image'. It shows the flashcard along with a tibble describing the features of the image.
 }
 \description{
-\code{pokecard} creates a flashcard of the pokemon team
+\code{pokecard} create an image of the pokemon team, appending their sprites
 }
 \examples{
-pokecard(myteam = c("pikachu","bulbasaur", "squirtle", "charmander", "pidgey", "psyduck"))
+pokecard(c("pikachu","bulbasaur", "squirtle", "charmander", "pidgey", "psyduck"))
+pokecard(c("charmander","charmeleon", "charizard"),  "Charmander's evolutions", "Orange")
 }
