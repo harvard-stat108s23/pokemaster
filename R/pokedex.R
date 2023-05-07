@@ -87,13 +87,3 @@ pokedex <- function(ids = seq(1,386)){
   return(pokedex_df)
 }
 
-
-#pokedex(c(1,2,3))
-#pokedex(c(1))
-#pokedex(-1)
-
-#pokedex("pikachu")
-#pokedex(c("pikachu","bulbasaur"))
-
-#pokedex(c("pikachu",1,2))
-

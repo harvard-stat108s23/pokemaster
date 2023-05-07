@@ -15,19 +15,6 @@
 
 pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
 
-
-  #IMPROVE GRAPH
-  #Pls improve title, axis, colors, legend name
-  #Rename legend "variable" to "stat"
-  #Capitalize name of the pokemons
-  #replace the names of the stats:
-  #hp -> HP
-  #attack -> Attack
-  #defense -> Defense
-  #special_attack -> Special Attack
-  #special_defense -> Special Defense
-  #speed -> Speed
-
 # ---------- Check inputs
 
   # Check that the input is a vector of integers or strings
@@ -72,30 +59,21 @@ pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
   # Create the barplot using ggplot2, previously wrangling the data
   colors <- c("#FF0000", "#F08030", "#F8D030", "#6890F0", "#78C850", "#F85888")
   lab = c("HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed")
-  #background = "white"
-  #border = c("black", "black", "black", "black", "black", "black")
   barplot <- pokemaster::pokedex(myteam) |>
     dplyr::select(c("name", "hp", "attack", "defense", "special_attack", "special_defense", "speed")) |>
     reshape2::melt(id.vars = "name") |>
-    ggplot2::ggplot(ggplot2::aes(x = name, y = value, fill = variable)) +
+    ggplot2::ggplot(ggplot2::aes(x = tools::toTitleCase(name), y = value, fill = variable)) +
     ggplot2::geom_bar(stat="identity", position = "dodge") +
     ggplot2::scale_fill_manual(values=colors, labels=lab) +
-    ggplot2::xlab("Name") +
-    ggplot2::ylab("Value") +
     ggplot2::labs(fill = "Stat") +
-    #graphics::par(bg = background) +
-    ggplot2::ggtitle(title) #+
-  #theme_classic()
+    ggplot2::ggtitle(title) +
+    ggplot2::theme_bw() +
+    ggplot2::theme(axis.title.x=ggplot2::element_blank(),
+          axis.title.y=ggplot2::element_blank())
 
 
   return(barplot)
 }
 
-
-
-#pokestats(c(1,2,3))
-#pokestats(c("bulbasaur","pikachu"))
-#pokestats(c(1,2,"pikachu"))
-#pokestats(c(1,2,"pikachu"), title = "asd")
 
 

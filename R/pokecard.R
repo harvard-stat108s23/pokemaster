@@ -89,8 +89,3 @@ pokecard <- function(myteam = pokegen(), title="My Pokemon Team", color="#c60031
   return(flashcard)
 }
 
-
-#pokecard(c(1,2,3))
-#pokecard(c("bulbasaur","pikachu"))
-#pokecard(c(1,2,"pikachu"))
-#pokecard(c(1,2,"pikachu"), title = "asd", "#00FF00")

@@ -64,13 +64,13 @@ pokecard(myteam = c("pikachu", "eevee", "charizard"),
          color="LightBlue", title="Pikachu, Eevee, Charizard")
 ```
 ```{r}
-pokecard(myteam = c("snorlax", "ditto", "piplup"), 
-         color="LightBlue", title="Snorlax, Ditto, Piplup")
+pokecard(myteam = c("snorlax", "ditto", "venusaur"), 
+         color="LightBlue", title="Snorlax, Ditto, Venusaur")
 ```
 
 ```{r}
 pokecard(myteam = 
-           c("pikachu","eevee", "charizard", "snorlax", "ditto", "piplup"), 
+           c("pikachu","eevee", "charizard", "snorlax", "ditto", "venusaur"), 
               color="LightBlue", title="Whole Team")
 ```
 
@@ -85,35 +85,35 @@ The third example illustrates how our package can answer a question like
 This question can be answered by showing the stats, creating the postcard to see how the teams are different visually, and by the comparing their stats in a bar plot.
 
 ```{r}
-pokedex(c("pikachu","eevee", "charizard", "snorlax", "ditto", "piplup"))
+pokedex(c("pikachu","eevee", "charizard", "snorlax", "ditto", "venusaur"))
 ```
 
 ```{r}
-pokedex(c("squirtle","mew", "bulbasaur", "lopunny", "gible", "psyduck"))
+pokedex(c("squirtle","mew", "bulbasaur", "rattata", "pidgey", "psyduck"))
 ```
 
 From the above two tables, we can compare and contrast the specific stat that the pokemon fan is interested in within the two teams and across the teams.
 
 ```{r}
 pokecard(myteam = 
-           c("pikachu","eevee", "charizard", "snorlax", "ditto", "piplup"), 
+           c("pikachu","eevee", "charizard", "snorlax", "ditto", "venusaur"), 
               color="LightBlue", title="Team 1")
 ```
 ```{r}
 pokecard(myteam = 
-           c("squirtle","mew", "bulbasaur", "lopunny", "gible", "psyduck"), 
+           c("squirtle","mew", "bulbasaur", "rattata", "pidgey", "psyduck"), 
               color="LightBlue", title="Team 2")
 ```
 
 We also generated beautiful graphics for the two teams.
 
 ```{r}
-pokestats(myteam = c("pikachu","eevee", "charizard", "snorlax", "ditto", "piplup"),
+pokestats(myteam = c("pikachu","eevee", "charizard", "snorlax", "ditto", "venusaur"),
           "Team 1")
 ```
 
 ```{r}
-pokestats(myteam = c("squirtle","mew", "bulbasaur", "lopunny", "gible", "psyduck"),
+pokestats(myteam = c("squirtle","mew", "bulbasaur", "rattata", "pidgey", "psyduck"),
           "Team 2")
 ```
 

@@ -14,8 +14,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-URL: https://github.com/mcconvil/pkgDemo
-BugReports: https://github.com/mcconvil/pkgDemo/issues
+URL: https://github.com/harvard-stat108s23/pokemaster
+BugReports: https://github.com/harvard-stat108s23/pokemaster/issues
 Suggests: 
     knitr,
     rmarkdown,
@@ -30,7 +30,7 @@ Imports:
     httr,
     jsonlite,
     magick,
-    RColorBrewer,
     reshape2,
-    tidyr
+    tidyr,
+    tools
 Config/testthat/edition: 3

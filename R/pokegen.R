@@ -31,6 +31,3 @@ pokegen <- function(n=6) {
  }
 
 
-#pokegen(3)
-#pokegen(3.5)
-#pokegen(c(1,2))
