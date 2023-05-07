@@ -1,38 +1,41 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Pokemaster <img src="/man/figures/logo.png" align="right" height="139" />
+# pokemaster <img src="/man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of pokemaster is to explore the pokemon API. The users can
-first create a dataframe of the interested pokemons (our default is the
-386 pokemons, the first 3 generations). It then helps you generate a
-pokemon team. You can also see the relevant stats of your team and
-create a graph of the pokemon team including the selected pokemons. Our
-intended audience are Pokemon enthusiasts as well as gamers in general.
+The goal of `pokemaster` is to explore the pokemon API. This package
+exploits the information of the Pokémon of the first 3 generations
+(which corresponds to the ids 1 to 386). The users can first create a
+data frame of the Pokémons of interest. It then helps you generate a
+Pokémon team. You can also see the relevant stats of your team and
+create a graph of the Pokémon team including the selected Pokémons Our
+intended audience are Pokémon enthusiasts as well as gamers in general.
+For more general information about Pokémon, you can visit
+[Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number)
 
 ## Installation
 
-You can install pokemaster pacage from [GitHub](https://github.com/)
+You can install `pokemaster` package from [GitHub](https://github.com/)
 with:
 
 ``` r
 install.packages("pokemaster")
 ```
 
-You can install the development version of pokemaster from
+You can install the development version of `pokemaster` from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("harvard-stat108s23/project2-group3")
+devtools::install_github("harvard-stat108s23/pokemaster")
 ```
 
 ## About the Data
 
-The [pokemon API](https://pokeapi.co/) contains information on Pokémon,
+The [pokemon API](https://pokeapi.co/) contains information on Pokémons,
 their moves, abilities, types, egg groups and much, much more.
 
 An API (Application Programming Interface) is a contract that allow
@@ -66,15 +69,14 @@ pokedex(c(6))
 ```
 
 In the above example, we illustrated how someone could retrieve the
-relevant information of the Pokemon “charizard” by its name or by its
-id. We can show its weight, height, base_experience, hp, attack,
-defense, special attact, special_defense, speed, and type 1 and type 2
-information.
+relevant information of the Pokémon “charizard” by its name or by its
+id. We can show its weight, height, base_experience, HP, attack,
+defense, special attack, special_defense, speed, type 1 and type 2.
 
 ## Example 2 – Pokecard Generation
 
 In example 2, we illustrate how you can easily create a team of Pokemons
-of your choice, and create a graphic out of it.
+of your choice, and create a graph out of it.
 
 ``` r
 pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
@@ -82,14 +84,24 @@ pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"
 
 <img src="man/figures/README-pokecard-1.png" width="100%" />
 
-In the above example, we used the pokecard function to pick a team of
-Pokemonds. We picked 6 Pokemons – “pikachu”,“staryu”, “exeggutor”,
-“wynaut”, “wailmer”, “xatu”, customized the card color to “LightBlue”,
-and chose a name for the card “Best Team”. You can see the pokecard is
+In the above example, we used the `pokecard` function to pick a team of
+Pokemons. We picked 6 Pokémons – “pikachu”,“staryu”, “exeggutor”,
+“wynaut”, “wailmer”, “xatu” –, customized the card color to “LightBlue”,
+and chose a name for the card “Best Team”. You can see the `pokecard` is
 generated accordingly.
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+## Example 3 – Stats analysis
+
+In example 3, we illustrate how you can easily visualize the 6 main
+stats (HP, Attack, Defense, Special Attack, Special Defense and Speed)
+of your Pokémon team
+
+``` r
+pokestats(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), title="Best Team")
+```
+
+<img src="man/figures/README-pokestats-1.png" width="100%" />
+
+In the above example, we used the `pokestats` function to plot the stats
+of the same Pokémon team and chose the title name “Best Team”. You can
+see the `pokestats` barplot is generated accordingly.
