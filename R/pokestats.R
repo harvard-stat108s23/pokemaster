@@ -71,8 +71,9 @@ pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
 
   # Create the barplot using ggplot2, previously wrangling the data
   colors <- c("#FF0000", "#F08030", "#F8D030", "#6890F0", "#78C850", "#F85888")
-  #names <- c("group1","group2","group3","group4","group5", "group6")
   lab = c("HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed")
+  #background = "white"
+  #border = c("black", "black", "black", "black", "black", "black")
   barplot <- pokemaster::pokedex(myteam) |>
     dplyr::select(c("name", "hp", "attack", "defense", "special_attack", "special_defense", "speed")) |>
     reshape2::melt(id.vars = "name") |>
@@ -81,7 +82,8 @@ pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
     ggplot2::scale_fill_manual(values=colors, labels=lab) +
     ggplot2::xlab("Name") +
     ggplot2::ylab("Value") +
-    ggplot2::labs(fill = "stat") +
+    ggplot2::labs(fill = "Stat") +
+    #graphics::par(bg = background) +
     ggplot2::ggtitle(title) #+
   #theme_classic()
 
