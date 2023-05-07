@@ -49,7 +49,7 @@ pokestats <- function(myteam= pokegen(), title="My Pokemon Team") {
 
   # Check that, if the input is a string vector, the values are valid pokemon names
   if(is.character(myteam)){
-    if((!all(suppressWarnings(myteam[is.na(as.numeric(myteam))]) %in% pokedex_df$name))){
+    if((!all(suppressWarnings(myteam[is.na(as.numeric(myteam))]) %in% pokemaster::pokedex_df$name))){
       stop('If using pokemons names, all values must be valid pokemon names from the first 3 generations')
     }}
 
