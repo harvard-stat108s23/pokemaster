@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of `pokemaster` is to explore the pokemon API. This package exploits the information of the Pokémon of the first 3 generations (which corresponds to the ids 1 to 386). The users can first create a data frame of the Pokémons of interest. It then helps you generate a Pokémon team. You can also see the relevant stats of your team and create a graph of the Pokémon team including the selected Pokémons Our intended audience are Pokémon enthusiasts as well as gamers in general. For more general information about Pokémon, you can visit [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number)
+The goal of `pokemaster` is to explore the Pokémon API. This package exploits the information of the Pokémon of the first 3 generations (which corresponds to the ids 1 to 386). The users can first create a data frame of the Pokémons of interest. It then helps you generate a Pokémon team. You can also see the relevant stats of your team and create a graph of the team including the selected Pokémons. Our intended audience are Pokémon enthusiasts as well as gamers in general. For more general information about Pokémon, you can visit [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number).
 
 ## Installation
 
@@ -63,18 +63,18 @@ In the above example, we illustrated how someone could retrieve the relevant inf
 
 ## Example 2 -- Pokecard Generation
 
-In example 2, we illustrate how you can easily create a team of Pokemons of your choice, and create a graph out of it.
+In example 2, we illustrate how you can easily create a team of Pokémons of your choice, and create a graph out of it.
 
 ```{r pokecard}
 pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
 ```
 
-In the above example, we used the `pokecard` function to pick a team of Pokemons. We picked 6 Pokémons --  "pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu" --, customized the card color to "LightBlue", and chose a name for the card "Best Team". You can see the `pokecard` is generated accordingly. 
+In the above example, we used the `pokecard` function to pick a team of Pokemons. We picked 6 Pokémons -  "pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu" -, customized the card color to "LightBlue", and chose a name for the card "Best Team". You can see the `pokecard` is generated accordingly. 
 
 
 ## Example 3 -- Stats analysis
 
-In example 3, we illustrate how you can easily visualize the 6 main stats (HP, Attack, Defense, Special Attack, Special Defense and Speed) of your Pokémon team
+In example 3, we illustrate how you can easily visualize the 6 main stats (HP, Attack, Defense, Special Attack, Special Defense and Speed) of your Pokémon team.
 
 ```{r pokestats}
 pokestats(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), title="Best Team")

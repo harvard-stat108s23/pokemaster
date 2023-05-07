@@ -6,15 +6,15 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of `pokemaster` is to explore the pokemon API. This package
+The goal of `pokemaster` is to explore the Pokémon API. This package
 exploits the information of the Pokémon of the first 3 generations
 (which corresponds to the ids 1 to 386). The users can first create a
 data frame of the Pokémons of interest. It then helps you generate a
 Pokémon team. You can also see the relevant stats of your team and
-create a graph of the Pokémon team including the selected Pokémons Our
-intended audience are Pokémon enthusiasts as well as gamers in general.
-For more general information about Pokémon, you can visit
-[Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number)
+create a graph of the team including the selected Pokémons. Our intended
+audience are Pokémon enthusiasts as well as gamers in general. For more
+general information about Pokémon, you can visit
+[Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number).
 
 ## Installation
 
@@ -75,7 +75,7 @@ defense, special attack, special_defense, speed, type 1 and type 2.
 
 ## Example 2 – Pokecard Generation
 
-In example 2, we illustrate how you can easily create a team of Pokemons
+In example 2, we illustrate how you can easily create a team of Pokémons
 of your choice, and create a graph out of it.
 
 ``` r
@@ -85,8 +85,8 @@ pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"
 <img src="man/figures/README-pokecard-1.png" width="100%" />
 
 In the above example, we used the `pokecard` function to pick a team of
-Pokemons. We picked 6 Pokémons – “pikachu”,“staryu”, “exeggutor”,
-“wynaut”, “wailmer”, “xatu” –, customized the card color to “LightBlue”,
+Pokemons. We picked 6 Pokémons - “pikachu”,“staryu”, “exeggutor”,
+“wynaut”, “wailmer”, “xatu” -, customized the card color to “LightBlue”,
 and chose a name for the card “Best Team”. You can see the `pokecard` is
 generated accordingly.
 
@@ -94,7 +94,7 @@ generated accordingly.
 
 In example 3, we illustrate how you can easily visualize the 6 main
 stats (HP, Attack, Defense, Special Attack, Special Defense and Speed)
-of your Pokémon team
+of your Pokémon team.
 
 ``` r
 pokestats(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), title="Best Team")
