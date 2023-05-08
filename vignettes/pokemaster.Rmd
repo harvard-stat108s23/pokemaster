@@ -27,7 +27,7 @@ Our package has 4 main functions.
 
 - The second function is **pokegen**. It takes an input of a vector of positive integer from 1 to 6 (since a Pokémon team can consist of up to 6 Pokémons). Example:  pokegen(3) generate a vector of 3 random Pokémons. 
 
-- The third function is **pokecard**, which generates a flashcard of the team. It takes the input of vector of up to 6 Pokemons and has an output of an image/collage with the sprites of the Pokémons. 
+- The third function is **pokecard**, which generates a flashcard of the team. It takes the input of vector of up to 6 Pokémons and has an output of an image/collage with the sprites of the Pokémons. 
 
 - The forth function is **pokestats**. It is a function that plots barplot of the basic stats for each Pokémon. It take an input vector of up to 6 Pokémons, and generates a barplot. We provide visualization for hitpoints (HP), Attack, Defense, Special Attack, Special Defense and Speed.
 
@@ -76,7 +76,7 @@ pokecard(myteam =
 
 Through the above code, we can help this Pokemon fan create their favorite postcard!!!
 
-## Example 3 Team Stat Comparison
+## Example 3 Stats analysis
 
 The third example illustrates how our package can answer a question like: 
 
