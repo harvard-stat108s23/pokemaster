@@ -13,6 +13,10 @@
 pokegen <- function(n=6) {
 # ---------- Check inputs
 
+  if(is.character(n)){
+    stop('`n` must be an integer')
+  }
+
   #Check that 'n' is a single integer
   if(!(length(n) == 1 & is.numeric(n) & all(n%%1 == 0))){
     stop('`n` must be a single integer')
