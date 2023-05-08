@@ -2,7 +2,7 @@
 #'
 #' `pokecard` create an image of the pokemon team, appending their sprites
 #'
-#' @param myteam A vector with a length of up 6 to pokemons. It can be valid numeric ids or valid pokemon names. By default, it creates a flashcard of a team of 6 random pokemons.
+#' @param myteam A vector with a length of up 6 to pokemons. It can be valid numeric ids or valid pokemon names (lowercase). By default, it creates a flashcard of a team of 6 random pokemons.
 #' @param title A string. It determines the title at the top of the flashcard. By default, the title is 'My Pokemon Team'
 #' @param color A string, which should be a valid color. It determines the color of the border of the flashcard.
 #'

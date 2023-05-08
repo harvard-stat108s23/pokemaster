@@ -23,27 +23,27 @@ library(pokemaster)
 
 Our package has 4 main functions. 
 
-- The first function is **pokedex**. It is a function that creates dataframe with features like id, name, stats, type. The default output of the function is a dataframe of all pokemons.
+- The first function is **pokedex**. It is a function that creates dataframe with features like id, name, stats and types. The default output of the function is a dataframe of all Pokémons, but the user can retrieve the information of only the Pokémons of interest.
 
-- The second function is **pokegen**. It takes an input of a vector of positive integer from 1 to 6. Example:  pokegen(3), and generate that number of pokemons. 
+- The second function is **pokegen**. It takes an input of a vector of positive integer from 1 to 6 (since a Pokémon team can consist of up to 6 Pokémons). Example:  pokegen(3) generate a vector of 3 random Pokémons. 
 
-- The third function is **pokecard**, which generates a flashcard of the team. It takes the input of vector of up to 6 Pokemons and has an output of an image. 
+- The third function is **pokecard**, which generates a flashcard of the team. It takes the input of vector of up to 6 Pokemons and has an output of an image/collage with the sprites of the Pokémons. 
 
-- The forth function is **pokestats**. It is a function that plots barplot of the basic stats for each pokemon_data. It take an input vector of up to 6 pokemons, and generates an output ggbarplot. We provide visualization for hitpoints, attack, defense, sp attack, special defense, speed.
+- The forth function is **pokestats**. It is a function that plots barplot of the basic stats for each Pokémon. It take an input vector of up to 6 Pokémons, and generates a barplot. We provide visualization for hitpoints (HP), Attack, Defense, Special Attack, Special Defense and Speed.
 
 ## Example 1 Pokemon Stats Comparison
 
-The first example illustrates how our package can answer a question like 
+The first example illustrates how our package can answer a question like:
 
-- "How is Pikachu's stats compared with Eevee?"
+- "How is Pikachu's stats compared with Eevee's?"
 
-This can be best answered by the **pokedex** function so we have see the stats of the two Pokemons, as well as the **pokestats** function because it nicely provides visualization of the key stats of the Pokemons.
+This can be best answered by the **pokedex** function so we have see the stats of the two Pokémons., as well as the **pokestats** function because it nicely provides visualization of the key stats of the Pokémons.
 
 ```{r}
 pokedex(c("pikachu", "eevee"))
 ```
 
-Through this dataframe, we can directly compare the above two Pokemons on the key stats such as weight, height, base_experience, hp, attack, defense, special_attack, special_defense, speed, and their types.
+Through this data frame, we can directly compare the above two Pokémons on the key stats such as weight, height, base experience, hp, attack, defense, special attack, special defense, speed, and their types.
 
 ```{r}
 pokestats(myteam = c("pikachu","eevee"), "Pikachu v.s. Eevee")
@@ -53,9 +53,9 @@ According to the above visualization, Eevee has a higher hp, about the same atta
 
 ## Example 2 Pokecard Generation
 
-The second example illustrates how our package can answer a question like 
+The second example illustrates how our package can answer a question like: 
 
-- "I am a Pokemon enthusiast. How can I generate a few postcards for my favorite pokemon team: pikachu, eevee, charizard, snorlax, ditto, and piplup. I want a postcard for the first three, the second three, and one for the whole team."
+- "I am a Pokemon enthusiast. How can I generate a few postcards for my favorite pokemon team: Pikachu, Eevee, Charizard, Snorlax, Ditto, and Venusaur I want a postcard for the first three, the second three, and one for the whole team."
 
 This can be best answered by the **pokecard** function because it generates a flashcard of the selected Pokemon. 
 
@@ -74,13 +74,13 @@ pokecard(myteam =
               color="LightBlue", title="Whole Team")
 ```
 
-Through the above code, we can help this Pokemon fan create their favorite postcard!!
+Through the above code, we can help this Pokemon fan create their favorite postcard!!!
 
 ## Example 3 Team Stat Comparison
 
-The third example illustrates how our package can answer a question like 
+The third example illustrates how our package can answer a question like: 
 
-- "I want to see how my favorite Pokemon team A: pikachu, eevee, charizard, snorlax, ditto, and piplup compare to another team B, which is composed of squirtle, mew, bulbasaur, lopunny, gible, and psyduck."
+- "I want to see how my favorite Pokemon team A: pikachu, eevee, charizard, snorlax, ditto, and venusaur compare to another team B, which is composed of squirtle, mew, bulbasaur, rattata, pidgey, and psyduck."
 
 This question can be answered by showing the stats, creating the postcard to see how the teams are different visually, and by the comparing their stats in a bar plot.
 

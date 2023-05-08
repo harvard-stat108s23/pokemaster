@@ -2,7 +2,7 @@
 #'
 #' `pokestats` creates a barplot of the main stats of the pokemons (HP, Attack, Defense, Sp. Attack, Sp. Defense and Speed)
 #'
-#' @param myteam A vector with a length of up 6 to pokemons. It can be valid numeric ids or valid pokemon names. By default, it creates a barplot of a team of 6 random pokemons.
+#' @param myteam A vector with a length of up 6 to pokemons. It can be valid numeric ids or valid pokemon names (lowercase). By default, it creates a barplot of a team of 6 random pokemons.
 #' @param title  A string. It determines the title at the top of the plot By default, the title is 'My Pokemon Team'
 #'
 #' @return ggplot2 object, which contains the barplot of the main stats for each pokemon
