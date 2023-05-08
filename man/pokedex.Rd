@@ -7,7 +7,7 @@
 pokedex(ids = seq(1, 386))
 }
 \arguments{
-\item{ids}{Vector of integers or pokemon names. By default, it extracts the information and stats of the pokemons of the first 3 generations, which corresponds to the numeric ids 1 to 386}
+\item{ids}{Vector of integers (from 1 to 386) or valid pokemon names (lowercase). By default, it extracts the information and stats of the pokemons of the first 3 generations, which corresponds to the numeric ids 1 to 386}
 }
 \value{
 Data frame with the information and stats of the pokemons

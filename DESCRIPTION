@@ -1,6 +1,6 @@
 Package: pokemaster
 Title: A Package to Explore the Pokemon API
-Version: 0.0.0.9000
+Version: 1.0.0.0000
 Authors@R: 
     c(person("Joslyn", "Fu", , "jfu@g.harvard.edu", role = c("aut"),
            comment = c(ORCID = "YOUR-ORCID-ID")),

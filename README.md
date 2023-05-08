@@ -6,14 +6,21 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
+The world of Pokémon has captured the hearts and imaginations of people
+of all ages around the world. From its humble beginnings as a video game
+to its evolution into a massive media franchise spanning anime, movies,
+card games, and more, Pokemon has become a cultural phenomenon. As such,
+there is a great interest among fans to explore and analyze the vast
+amount of data surrounding this world.
+
 The goal of `pokemaster` is to explore the Pokémon API. This package
 exploits the information of the Pokémon of the first 3 generations
 (which corresponds to the ids 1 to 386). The users can first create a
 data frame of the Pokémons of interest. It then helps you generate a
 Pokémon team. You can also see the relevant stats of your team and
-create a graph of the team including the selected Pokémons. Our intended
-audience are Pokémon enthusiasts as well as gamers in general. For more
-general information about Pokémon, you can visit
+create a nice flashcard of the team of the selected Pokémons. Our
+intended audience are Pokémon enthusiasts as well as gamers in general.
+For more general information about Pokémon, you can visit
 [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number).
 
 ## Installation
@@ -35,8 +42,13 @@ devtools::install_github("harvard-stat108s23/pokemaster")
 
 ## About the Data
 
-The [pokemon API](https://pokeapi.co/) contains information on Pokémons,
-their moves, abilities, types, egg groups and much, much more.
+We are working with the [pokemon API](https://pokeapi.co/) which is
+available in JSON format. PokeAPI is a free, open-source web API that
+provides a comprehensive set of data on the Pokemon video game
+franchise. It allows developers, researchers, and fans to easily access
+a vast amount of information about the Pokemon universe, including
+details on individual Pokemon, their moves, abilities, types, egg groups
+and much, much more.
 
 An API (Application Programming Interface) is a contract that allow
 developers to interact with an application through a set of interfaces.
@@ -79,7 +91,8 @@ In example 2, we illustrate how you can easily create a team of Pokémons
 of your choice, and create a graph out of it.
 
 ``` r
-pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), color="LightBlue", title="Best Team")
+pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), 
+         color="LightBlue", title="Best Team")
 ```
 
 <img src="man/figures/README-pokecard-1.png" width="100%" />
@@ -87,8 +100,9 @@ pokecard(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"
 In the above example, we used the `pokecard` function to pick a team of
 Pokemons. We picked 6 Pokémons - “pikachu”,“staryu”, “exeggutor”,
 “wynaut”, “wailmer”, “xatu” -, customized the card color to “LightBlue”,
-and chose a name for the card “Best Team”. You can see the `pokecard` is
-generated accordingly.
+and chose “Best Team” as the title for the card. You can see the
+`pokecard` is generated accordingly. There is nothing better than a nice
+flashcard of your favorite Pokémon team!
 
 ## Example 3 – Stats analysis
 
@@ -97,11 +111,13 @@ stats (HP, Attack, Defense, Special Attack, Special Defense and Speed)
 of your Pokémon team.
 
 ``` r
-pokestats(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), title="Best Team")
+pokestats(myteam = c("pikachu","staryu", "exeggutor", "wynaut", "wailmer", "xatu"), 
+          title="Best Team")
 ```
 
 <img src="man/figures/README-pokestats-1.png" width="100%" />
 
 In the above example, we used the `pokestats` function to plot the stats
 of the same Pokémon team and chose the title name “Best Team”. You can
-see the `pokestats` barplot is generated accordingly.
+see the `pokestats` barplot is generated accordingly. This is useful to
+analyze the stats of your team and improve it!

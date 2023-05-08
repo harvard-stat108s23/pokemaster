@@ -7,7 +7,7 @@
 pokecard(myteam = pokegen(), title = "My Pokemon Team", color = "#c60031")
 }
 \arguments{
-\item{myteam}{A vector with a length of up 6 to pokemons. It can be valid numeric ids or valid pokemon names. By default, it creates a flashcard of a team of 6 random pokemons.}
+\item{myteam}{A vector with a length of up 6 to pokemons. It can be valid numeric ids or valid pokemon names (lowercase). By default, it creates a flashcard of a team of 6 random pokemons.}
 
 \item{title}{A string. It determines the title at the top of the flashcard. By default, the title is 'My Pokemon Team'}
 

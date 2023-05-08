@@ -19,17 +19,22 @@ library(pokemaster)
 ```
 
 
+## Motivation 
+
+The world of Pokémon has captured the hearts and imaginations of people of all ages around the world. From its humble beginnings as a video game to its evolution into a massive media franchise spanning anime, movies, card games, and more, Pokemon has become a cultural phenomenon. As such, there is a great interest among fans to explore and analyze the vast amount of data surrounding this world. The goal of `pokemaster` is to explore the Pokémon API. This package exploits the information of the Pokémon of the first 3 generations (which corresponds to the ids 1 to 386). 
+
+
 ## Overview of Functions
 
 Our package has 4 main functions. 
 
-- The first function is **pokedex**. It is a function that creates dataframe with features like id, name, stats and types. The default output of the function is a dataframe of all Pokémons, but the user can retrieve the information of only the Pokémons of interest.
+- The first function is **pokedex**. It is a function that creates dataframe with features like id, name, stats and types. The default output of the function is a dataframe of all Pokémons, but the user can retrieve the information of only the Pokémons of interest. To do so, the user can either use valid Pokémon names, their ids, or a combination of both.
 
 - The second function is **pokegen**. It takes an input of a vector of positive integer from 1 to 6 (since a Pokémon team can consist of up to 6 Pokémons). Example:  pokegen(3) generate a vector of 3 random Pokémons. 
 
-- The third function is **pokecard**, which generates a flashcard of the team. It takes the input of vector of up to 6 Pokémons and has an output of an image/collage with the sprites of the Pokémons. 
+- The third function is **pokecard**, which generates a flashcard of the team. It takes the input of vector of up to 6 Pokémons and has an output of an image/collage with the sprites of the Pokémons. The user can also set a title and the color of the border of the flashcard.
 
-- The forth function is **pokestats**. It is a function that plots barplot of the basic stats for each Pokémon. It take an input vector of up to 6 Pokémons, and generates a barplot. We provide visualization for hitpoints (HP), Attack, Defense, Special Attack, Special Defense and Speed.
+- The forth function is **pokestats**. It is a function that plots barplot of the basic stats for each Pokémon. It takes an input vector of up to 6 Pokémons, and generates a barplot using the ggplot2 library. We provide the visualization for the main 6 stats of the game: hitpoints (HP), Attack, Defense, Special Attack, Special Defense and Speed.
 
 ## Example 1 Pokemon Stats Comparison
 
@@ -74,7 +79,7 @@ pokecard(myteam =
               color="LightBlue", title="Whole Team")
 ```
 
-Through the above code, we can help this Pokemon fan create their favorite postcard!!!
+Through the above code, we can help this Pokemon fan create their favorite postcard!
 
 ## Example 3 Stats analysis
 
@@ -119,3 +124,24 @@ pokestats(myteam = c("squirtle","mew", "bulbasaur", "rattata", "pidgey", "psyduc
 
 From the above two bar plots, we can see how each of the Pokemons in each team can have varying capacities in different stats. From the above analysis, we cannot conclude that any of the team has much higher stats than the other. 
 
+
+## Example 4 Random Pokemon generator
+
+The forth example illustrates how our package can answer a question like: 
+
+- "I don't know to much about Pokemon, but anyways I would like to create a random team and see how good the team is and how it looks like"
+
+```{r}
+myteam <- pokegen()
+```
+```{r}
+pokedex(myteam)
+```
+```{r}
+pokecard(myteam, "My random team", color='red')
+```
+```{r}
+pokestats(myteam, "My random team")
+```
+```
+Nice! you get a very good team! You can further explore their stats and play around with new random teams!
