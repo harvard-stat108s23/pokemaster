@@ -50,7 +50,7 @@ pokedex(c("pikachu", "eevee"))
 
 Through this data frame, we can directly compare the above two Pokémons on the key stats such as weight, height, base experience, hp, attack, defense, special attack, special defense, speed, and their types.
 
-```{r}
+```{r fig3, fig.height = 3, fig.width = 4, fig.align = "center"}
 pokestats(myteam = c("pikachu","eevee"), "Pikachu v.s. Eevee")
 ```
 
@@ -64,16 +64,16 @@ The second example illustrates how our package can answer a question like:
 
 This can be best answered by the **pokecard** function because it generates a flashcard of the selected Pokemon. 
 
-```{r}
+```{r,  fig.align = "center"}
 pokecard(myteam = c("pikachu", "eevee", "charizard"), 
          color="LightBlue", title="Pikachu, Eevee, Charizard")
 ```
-```{r}
+```{r,  fig.align = "center"}
 pokecard(myteam = c("snorlax", "ditto", "venusaur"), 
          color="LightBlue", title="Snorlax, Ditto, Venusaur")
 ```
 
-```{r}
+```{r,  fig.align = "center"}
 pokecard(myteam = 
            c("pikachu","eevee", "charizard", "snorlax", "ditto", "venusaur"), 
               color="LightBlue", title="Whole Team")
@@ -99,12 +99,12 @@ pokedex(c("squirtle","mew", "bulbasaur", "rattata", "pidgey", "psyduck"))
 
 From the above two tables, we can compare and contrast the specific stat that the pokemon fan is interested in within the two teams and across the teams.
 
-```{r}
+```{r, fig.align = "center"}
 pokecard(myteam = 
            c("pikachu","eevee", "charizard", "snorlax", "ditto", "venusaur"), 
               color="LightBlue", title="Team 1")
 ```
-```{r}
+```{r, fig.align = "center"}
 pokecard(myteam = 
            c("squirtle","mew", "bulbasaur", "rattata", "pidgey", "psyduck"), 
               color="LightBlue", title="Team 2")
@@ -112,12 +112,12 @@ pokecard(myteam =
 
 We also generated beautiful graphics for the two teams.
 
-```{r}
+```{r fig1, fig.height = 3, fig.width = 6, fig.align = "center"}
 pokestats(myteam = c("pikachu","eevee", "charizard", "snorlax", "ditto", "venusaur"),
           "Team 1")
 ```
 
-```{r}
+```{r fig2, fig.height = 3, fig.width = 6, fig.align = "center"}
 pokestats(myteam = c("squirtle","mew", "bulbasaur", "rattata", "pidgey", "psyduck"),
           "Team 2")
 ```
@@ -137,11 +137,12 @@ myteam <- pokegen()
 ```{r}
 pokedex(myteam)
 ```
-```{r}
+```{r, fig.align = "center"}
 pokecard(myteam, "My random team", color='red')
 ```
-```{r}
+```{r fig4, fig.height = 3, fig.width = 6, fig.align = "center"}
 pokestats(myteam, "My random team")
 ```
-```
+
+
 Nice! you get a very good team! You can further explore their stats and play around with new random teams!
